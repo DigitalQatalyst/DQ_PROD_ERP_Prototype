@@ -11,7 +11,7 @@ export default function AppLayout() {
         className="ml-[240px] mt-[60px] min-h-[calc(100vh-60px)] bg-white"
       >
         <div
-          className="max-w-[1120px] px-10 py-8"
+          className="px-6 py-8"
           style={{ minHeight: 'calc(100vh - 60px)' }}
         >
           <Outlet />

@@ -2,9 +2,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { PersonaProvider } from './context/PersonaContext'
 import { ToastProvider } from './components/Toast'
 import AppLayout from './layouts/AppLayout'
-import HomeRedirect from './components/HomeRedirect'
-
 // Built pages — 10 core
+import PlatformHome from './pages/PlatformHome'
 import ExecutiveHome from './pages/ExecutiveHome'
 import FinanceControlHome from './pages/FinanceControlHome'
 import FinanceOpsConsole from './pages/FinanceOpsConsole'
@@ -86,8 +85,8 @@ export default function App() {
         <ToastProvider>
           <Routes>
             <Route element={<AppLayout />}>
-              {/* Default redirect to active persona's landing */}
-              <Route index element={<HomeRedirect />} />
+              {/* Universal home — same for all personas */}
+              <Route index element={<PlatformHome />} />
 
               {/* Core pages */}
               <Route path="/executive-home" element={<ExecutiveHome />} />
@@ -102,8 +101,8 @@ export default function App() {
               <Route path="/approval-console" element={<ApprovalConsole />} />
               <Route path="/escalations" element={<EscalationsExceptions />} />
 
-              {/* Home group */}
-              <Route path="/orientation" element={<OrientationGuide />} />
+              {/* Home group — /orientation and /role-switch redirect to home */}
+              <Route path="/orientation" element={<PlatformHome />} />
               <Route path="/role-switch" element={<RoleEntitySwitch />} />
 
               {/* My Work group */}

@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import {
-  Home, Info, Shuffle, LayoutDashboard, CheckSquare, ClipboardList,
+  Home, LayoutDashboard, CheckSquare, ClipboardList,
   MessageCircle, FileCheck, Bell, BarChart2, Receipt, FileText,
   TrendingUp, Shield, CalendarCheck, ShoppingCart, PlusSquare,
   Users, UserPlus, GitPullRequest, RefreshCw, Package, FolderOpen,
@@ -38,8 +38,6 @@ const NAV_GROUPS: NavGroupDef[] = [
     roles: ALL_INTERNAL,
     items: [
       { label: 'DWS.04 Home', icon: <Home size={20} strokeWidth={1.5} />, route: '/', roles: ALL_INTERNAL },
-      { label: 'Orientation Guide', icon: <Info size={20} strokeWidth={1.5} />, route: '/orientation', roles: ALL_INTERNAL },
-      { label: 'Role / Entity Switch', icon: <Shuffle size={20} strokeWidth={1.5} />, route: '/role-switch', roles: ['EXEC', 'FIN-OWN', 'ADMIN', 'BC-STEWARD'] },
     ],
   },
   {

@@ -20,7 +20,7 @@ export function PersonaProvider({ children }: { children: React.ReactNode }) {
       const next = personas.find((p) => p.id === id)
       if (!next) return
       setActivePersona(next)
-      navigate(next.landingRoute)
+      navigate('/')
     },
     [navigate]
   )
