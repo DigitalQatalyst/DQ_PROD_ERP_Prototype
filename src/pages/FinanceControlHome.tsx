@@ -5,6 +5,7 @@ import RequestIDTag from '../components/RequestIDTag'
 import SidePanel from '../components/SidePanel'
 import EvidenceChecklist from '../components/EvidenceChecklist'
 import AIInsightCard from '../components/AIInsightCard'
+import SummaryTile from '../components/SummaryTile'
 import { useToast } from '../components/Toast'
 import { requests, kpis } from '../data/fixtures'
 import type { Request } from '../types'
@@ -57,6 +58,24 @@ export default function FinanceControlHome() {
     <div>
       <h1 className="text-2xl font-bold text-text-primary mb-1">Finance Control</h1>
       <p className="text-sm text-text-muted mb-6">Mohammed Rashid · Finance Control Owner</p>
+
+      {/* Finance Summary Dashboard */}
+      <div className="mb-6">
+        <p
+          className="text-[11px] font-semibold uppercase tracking-widest text-text-muted mb-3"
+          style={{ letterSpacing: '0.12em' }}
+        >
+          Finance Summary — P&amp;L and Working Capital
+        </p>
+        <div className="grid grid-cols-3 gap-4">
+          <SummaryTile label="Total Revenue (AED)" value="1,820,000" color="navy" />
+          <SummaryTile label="Total Expenses (AED)" value="1,240,000" color="brown" />
+          <SummaryTile label="Net P&L (AED)" value="580,000" color="green" />
+          <SummaryTile label="AR Outstanding (AED)" value="245,000" color="navy" />
+          <SummaryTile label="AP Outstanding (AED)" value="186,400" color="red" />
+          <SummaryTile label="Journal Entry Count" value="723" color="blue" />
+        </div>
+      </div>
 
       {/* Summary chips */}
       <div className="flex items-center gap-3 mb-6">

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Activity, Clock, AlertTriangle, TrendingUp } from 'lucide-react'
 import KPICard from '../components/KPICard'
+import SummaryTile from '../components/SummaryTile'
 import AIInsightCard from '../components/AIInsightCard'
 import StatusBadge from '../components/StatusBadge'
 import BCSyncChip from '../components/BCSyncChip'
@@ -42,6 +43,24 @@ export default function ExecutiveHome() {
       <p className="text-sm text-text-muted mb-6">
         Good morning, Aisha. Here's your operating overview.
       </p>
+
+      {/* Executive Summary Dashboard */}
+      <div className="mb-8">
+        <p
+          className="text-[11px] font-semibold uppercase tracking-widest text-text-muted mb-3"
+          style={{ letterSpacing: '0.12em' }}
+        >
+          Executive Summary — Contract & Delivery
+        </p>
+        <div className="grid grid-cols-3 gap-4">
+          <SummaryTile label="Total Contract Value (AED)" value="1,060,000" color="navy" />
+          <SummaryTile label="Total Billed (AED)" value="638,000" color="green" />
+          <SummaryTile label="Total Collected (AED)" value="393,000" color="green" />
+          <SummaryTile label="Milestones Completed" value="8" color="green" />
+          <SummaryTile label="Milestones Overdue / Delayed" value="2" color="brown" />
+          <SummaryTile label="Outstanding AR (AED)" value="245,000" color="red" />
+        </div>
+      </div>
 
       {/* KPI Strip */}
       <div className="grid grid-cols-4 gap-5 mb-8">
