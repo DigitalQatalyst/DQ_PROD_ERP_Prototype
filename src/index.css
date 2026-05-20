@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Colour tokens */
+  --color-dq-navy: #030F35;
+  --color-dq-orange: #FB5535;
+  --color-bg: #FFFFFF;
+  --color-surface-1: #F6F6FB;
+  --color-surface-navy: #030F35;
+  --color-text-primary: #111118;
+  --color-text-secondary: #2E2E42;
+  --color-text-muted: #5F607F;
+  --color-text-disabled: #8385A1;
+  --color-border-subtle: #EEEFF6;
+  --color-border-default: #D8D9E6;
+  --color-border-strong: #B0B2C8;
+  --color-status-success: #16A34A;
+  --color-status-success-surface: #DCFCE7;
+  --color-status-success-text: #15803D;
+  --color-status-warning: #D97706;
+  --color-status-warning-surface: #FEF3C7;
+  --color-status-warning-text: #B45309;
+  --color-status-error: #DC2626;
+  --color-status-error-surface: #FEE2E2;
+  --color-status-error-text: #B91C1C;
+  --color-status-info: #2563EB;
+  --color-status-info-surface: #DBEAFE;
+  --color-status-info-text: #1D4ED8;
+
+  /* Radii */
+  --radius-card: 12px;
+  --radius-modal: 12px;
+  --radius-btn: 8px;
+  --radius-input: 8px;
+  --radius-pill: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(3,15,53,0.06), 0 1px 2px rgba(3,15,53,0.04);
+  --shadow-md: 0 4px 12px rgba(3,15,53,0.08), 0 2px 6px rgba(3,15,53,0.05);
+  --shadow-lg: 0 12px 32px rgba(3,15,53,0.12), 0 4px 12px rgba(3,15,53,0.07);
+
+  /* Fonts */
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-text-primary);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Mono font utility for IDs and amounts */
+.font-mono,
+[data-mono] {
+  font-family: var(--font-mono);
+  font-feature-settings: 'tnum' on, 'lnum' on;
+}
+
+/* Tabular numbers for all numeric table cells */
+td.tabular-nums {
+  font-feature-settings: 'tnum' on, 'lnum' on;
+}
+
+/* Card hover lift */
+.card-hover {
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* SidePanel slide-in transition */
+.side-panel-enter {
+  transform: translateX(100%);
+}
+.side-panel-active {
+  transform: translateX(0);
+  transition: transform 220ms ease-out;
+}
+
+/* Toast slide-in */
+.toast-enter {
+  transform: translateX(20px);
+  opacity: 0;
+}
+.toast-active {
+  transform: translateX(0);
+  opacity: 1;
+  transition: transform 300ms ease-out, opacity 300ms ease-out;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-default);
+  border-radius: 3px;
+}
+
+/* Focus ring */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(3, 15, 53, 0.20);
+}

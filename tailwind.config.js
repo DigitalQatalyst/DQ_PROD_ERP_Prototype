@@ -1,0 +1,55 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        'dq-navy': '#030F35',
+        'navy-50': '#EEF2FF',
+        'navy-200': '#B5C5F7',
+        'navy-700': '#0D2199',
+        'dq-orange': '#FB5535',
+        'orange-50': '#FFF5F2',
+        'surface-1': '#F6F6FB',
+        'text-primary': '#111118',
+        'text-secondary': '#2E2E42',
+        'text-muted': '#5F607F',
+        'text-disabled': '#8385A1',
+        'border-subtle': '#EEEFF6',
+        'border-default': '#D8D9E6',
+        'border-strong': '#B0B2C8',
+        'icon-muted': '#8A91A6',
+        'status-success': '#16A34A',
+        'status-success-surface': '#DCFCE7',
+        'status-success-text': '#15803D',
+        'status-warning': '#D97706',
+        'status-warning-surface': '#FEF3C7',
+        'status-warning-text': '#B45309',
+        'status-error': '#DC2626',
+        'status-error-surface': '#FEE2E2',
+        'status-error-text': '#B91C1C',
+        'status-info': '#2563EB',
+        'status-info-surface': '#DBEAFE',
+        'status-info-text': '#1D4ED8',
+      },
+      borderRadius: {
+        card: '12px',
+        modal: '12px',
+        btn: '8px',
+        input: '8px',
+        pill: '9999px',
+      },
+      boxShadow: {
+        sm: '0 1px 3px rgba(3,15,53,0.06), 0 1px 2px rgba(3,15,53,0.04)',
+        md: '0 4px 12px rgba(3,15,53,0.08), 0 2px 6px rgba(3,15,53,0.05)',
+        lg: '0 12px 32px rgba(3,15,53,0.12), 0 4px 12px rgba(3,15,53,0.07)',
+      },
+      fontFamily: {
+        sans: ['Plus Jakarta Sans', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+      },
+    },
+  },
+  plugins: [],
+}
+
