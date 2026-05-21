@@ -9,9 +9,10 @@ import {
   Inbox, Sliders, AlertTriangle, Search, Globe, UserCog, Tag,
   Building, Map, Cpu, ShoppingBag, BarChart, Zap, AlertCircle,
   Settings, Activity, AlertOctagon, Code, GitMerge, ShieldCheck,
-  ClipboardEdit, Server, Wallet, HardDrive, Database, LifeBuoy,
+  ClipboardEdit, Server,
   ChevronLeft, ChevronRight, ChevronDown,
   Flag, HeartPulse, ClipboardCheck,
+  Compass, PenTool, Send, Gauge,
 } from 'lucide-react'
 import { usePersona } from '../context/PersonaContext'
 import type { PersonaRole } from '../types'
@@ -60,7 +61,7 @@ const STAGE_S00: NavStageDef = {
   ],
 }
 
-// ── S01 Marketplace — BRS Stage 1 catalogues (F-S1-01..07) ────────────────────
+// ── S01 Marketplace — 4D structure (Discern / Design / Deploy / Drive) ────────
 const STAGE_S01: NavStageDef = {
   code: 'S01',
   label: 'Marketplace',
@@ -70,13 +71,10 @@ const STAGE_S01: NavStageDef = {
       label: '',
       roles: ALL_INTERNAL,
       items: [
-        { label: 'Finance Services', icon: <Wallet size={20} strokeWidth={1.5} />, route: '/marketplace/finance', roles: ALL_INTERNAL },
-        { label: 'Procurement Services', icon: <ShoppingBag size={20} strokeWidth={1.5} />, route: '/marketplace/procurement', roles: ALL_INTERNAL },
-        { label: 'Project & Service Ops', icon: <Briefcase size={20} strokeWidth={1.5} />, route: '/marketplace/project-service', roles: ['EXEC', 'FIN-OWN', 'FIN-OPS', 'REQ'] },
-        { label: 'Admin & Asset Services', icon: <HardDrive size={20} strokeWidth={1.5} />, route: '/marketplace/admin-assets', roles: ['REQ', 'ADMIN', 'FIN-OPS'] },
-        { label: 'Master Data Changes', icon: <Database size={20} strokeWidth={1.5} />, route: '/marketplace/master-data', roles: ['FIN-OWN', 'ADMIN', 'BC-STEWARD'] },
-        { label: 'Integration Support', icon: <LifeBuoy size={20} strokeWidth={1.5} />, route: '/marketplace/integration', roles: ['ADMIN', 'BC-STEWARD', 'FIN-OPS'] },
-        { label: 'Discovery Search', icon: <Search size={20} strokeWidth={1.5} />, route: '/marketplace/search', roles: ALL_INTERNAL },
+        { label: 'Discern', icon: <Compass size={20} strokeWidth={1.5} />, route: '/marketplace/discern', roles: ALL_INTERNAL },
+        { label: 'Design', icon: <PenTool size={20} strokeWidth={1.5} />, route: '/marketplace/design', roles: ALL_INTERNAL },
+        { label: 'Deploy', icon: <Send size={20} strokeWidth={1.5} />, route: '/marketplace/deploy', roles: ALL_INTERNAL },
+        { label: 'Drive', icon: <Gauge size={20} strokeWidth={1.5} />, route: '/marketplace/drive', roles: ALL_INTERNAL },
       ],
     },
   ],

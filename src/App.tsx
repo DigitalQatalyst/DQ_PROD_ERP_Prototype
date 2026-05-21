@@ -81,7 +81,7 @@ import AIGuardrailsAuditLog from './pages/AIGuardrailsAuditLog'
 import ChangeRequestRegister from './pages/ChangeRequestRegister'
 import ReleaseEnvironmentControl from './pages/ReleaseEnvironmentControl'
 
-// S01 Marketplace — BRS Stage 1 catalogues (F-S1-01..07)
+// S01 Marketplace — legacy domain catalogues (kept for backward links from DiscoverySearch)
 import FinanceServicesCatalogue from './pages/marketplace/FinanceServicesCatalogue'
 import ProcurementServicesCatalogue from './pages/marketplace/ProcurementServicesCatalogue'
 import ProjectServiceCatalogue from './pages/marketplace/ProjectServiceCatalogue'
@@ -89,6 +89,18 @@ import AdminAssetCatalogue from './pages/marketplace/AdminAssetCatalogue'
 import MasterDataCatalogue from './pages/marketplace/MasterDataCatalogue'
 import IntegrationSupportCatalogue from './pages/marketplace/IntegrationSupportCatalogue'
 import DiscoverySearch from './pages/marketplace/DiscoverySearch'
+
+// S01 Marketplace — 4D structure (Discern / Design / Deploy / Drive)
+import DiscernMarketplace from './pages/marketplace/DiscernMarketplace'
+import DiscernGuidedAssistant from './pages/marketplace/DiscernGuidedAssistant'
+import DiscernPolicyLibrary from './pages/marketplace/DiscernPolicyLibrary'
+import DiscernThresholdReference from './pages/marketplace/DiscernThresholdReference'
+import DesignMarketplace from './pages/marketplace/DesignMarketplace'
+import DesignTemplateBrowser from './pages/marketplace/DesignTemplateBrowser'
+import DesignEvidenceLibrary from './pages/marketplace/DesignEvidenceLibrary'
+import DesignWorkflowBlueprints from './pages/marketplace/DesignWorkflowBlueprints'
+import DeployMarketplace from './pages/marketplace/DeployMarketplace'
+import DriveMarketplace from './pages/marketplace/DriveMarketplace'
 
 // Placeholder for unmatched routes only
 import PlaceholderPage from './components/PlaceholderPage'
@@ -120,7 +132,19 @@ export default function App() {
               <Route path="/orientation" element={<PlatformHome />} />
               <Route path="/role-switch" element={<RoleEntitySwitch />} />
 
-              {/* S01 Marketplace — BRS Stage 1 catalogues */}
+              {/* S01 Marketplace — 4D structure */}
+              <Route path="/marketplace/discern" element={<DiscernMarketplace />} />
+              <Route path="/marketplace/discern/assistant" element={<DiscernGuidedAssistant />} />
+              <Route path="/marketplace/discern/policies" element={<DiscernPolicyLibrary />} />
+              <Route path="/marketplace/discern/thresholds" element={<DiscernThresholdReference />} />
+              <Route path="/marketplace/design" element={<DesignMarketplace />} />
+              <Route path="/marketplace/design/templates" element={<DesignTemplateBrowser />} />
+              <Route path="/marketplace/design/evidence" element={<DesignEvidenceLibrary />} />
+              <Route path="/marketplace/design/workflows" element={<DesignWorkflowBlueprints />} />
+              <Route path="/marketplace/deploy" element={<DeployMarketplace />} />
+              <Route path="/marketplace/drive" element={<DriveMarketplace />} />
+
+              {/* S01 legacy routes — still resolve for deep-links, not in sidebar */}
               <Route path="/marketplace/finance" element={<FinanceServicesCatalogue />} />
               <Route path="/marketplace/procurement" element={<ProcurementServicesCatalogue />} />
               <Route path="/marketplace/project-service" element={<ProjectServiceCatalogue />} />

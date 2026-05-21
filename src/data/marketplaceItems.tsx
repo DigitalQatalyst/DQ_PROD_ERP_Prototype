@@ -1,0 +1,324 @@
+import type { ReactNode } from 'react'
+import {
+  Receipt, FileText, TrendingUp, Shield, ClipboardCheck, UserPlus,
+  ShoppingCart, GitPullRequest, RefreshCw, DollarSign, Briefcase, Layers,
+  Link as LinkIcon, Flag, Package, HardDrive, Plane, Building, Tag,
+  UserCog, FolderOpen, Activity, Code, Key, GitMerge,
+} from 'lucide-react'
+
+export type RequestDomain =
+  | 'Finance'
+  | 'Procurement'
+  | 'Project & Service'
+  | 'Admin & Asset'
+  | 'Master Data'
+  | 'Integration'
+
+export interface MarketplaceItem {
+  id: string
+  title: string
+  description: string
+  domain: RequestDomain
+  approver: string
+  sla: string
+  evidence: string[]
+  ctaRoute?: string
+  icon: ReactNode
+}
+
+const i = (icon: ReactNode) => icon
+
+export const marketplaceItems: MarketplaceItem[] = [
+  // ── Finance ────────────────────────────────────────────────────────────────
+  {
+    id: 'expense',
+    title: 'Expense / Reimbursement',
+    description: 'Submit personal or team expenses for reimbursement against approved budgets or cost centres.',
+    domain: 'Finance',
+    approver: 'Finance Control Owner',
+    sla: '2 business days',
+    evidence: ['Receipts', 'Justification'],
+    icon: i(<Receipt size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'invoice-payment',
+    title: 'Invoice / Payment',
+    description: 'Raise a payment request against a vendor invoice for AP processing and BC sync.',
+    domain: 'Finance',
+    approver: 'Finance Control Owner (>AED 50k → Executive)',
+    sla: '3 business days',
+    evidence: ['Signed invoice', 'PO reference', 'Delivery confirmation'],
+    icon: i(<FileText size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'budget-amendment',
+    title: 'Budget Amendment',
+    description: 'Request a change to an existing approved budget — including overage, reallocation, or timeline extension.',
+    domain: 'Finance',
+    approver: 'Executive Oversight',
+    sla: '5 business days',
+    evidence: ['Justification', 'Updated forecast'],
+    icon: i(<TrendingUp size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'tax-support',
+    title: 'Tax & Compliance Support',
+    description: 'Raise a query or request supporting documents for UAE VAT, corporate tax, or e-invoicing readiness.',
+    domain: 'Finance',
+    approver: 'Finance Control Owner',
+    sla: '5 business days',
+    evidence: ['Supporting documents'],
+    icon: i(<Shield size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'budget-requisition',
+    title: 'Budget Requisition',
+    description: 'Request a new budget allocation for an initiative, project, campaign, or cost item without prior funding.',
+    domain: 'Finance',
+    approver: 'Finance Control Owner (>AED 25k → Executive)',
+    sla: '4 business days',
+    evidence: ['Initiative brief', 'Cost breakdown', 'Expected outcomes'],
+    icon: i(<ClipboardCheck size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'customer-onboarding',
+    title: 'Customer Onboarding',
+    description: 'Onboard a new client for billing, AR, and revenue tracking — creates a customer master record on approval.',
+    domain: 'Finance',
+    approver: 'Finance Operations',
+    sla: '5 business days',
+    evidence: ['Company registration', 'VAT cert', 'Billing contact', 'Signed MSA'],
+    ctaRoute: '/customer-onboarding',
+    icon: i(<UserPlus size={20} strokeWidth={1.5} />),
+  },
+
+  // ── Procurement ────────────────────────────────────────────────────────────
+  {
+    id: 'purchase-request',
+    title: 'Purchase Request',
+    description: 'Request goods, services, tools, or platform infrastructure against a project or cost centre budget.',
+    domain: 'Procurement',
+    approver: 'Finance Control Owner',
+    sla: '3 business days',
+    evidence: ['Supplier quote', 'Business justification', 'Project link'],
+    icon: i(<ShoppingCart size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'vendor-onboarding',
+    title: 'Vendor Onboarding',
+    description: 'Onboard a new vendor with company, tax, and bank evidence — creates BC vendor record on approval.',
+    domain: 'Procurement',
+    approver: 'Procurement Owner + BC Steward',
+    sla: '5 business days',
+    evidence: ['Company registration', 'Tax certificate', 'Bank details'],
+    icon: i(<UserPlus size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'quote-rfq',
+    title: 'Quote / RFQ',
+    description: 'Capture supplier quotations and comparisons for a planned purchase before raising the PO.',
+    domain: 'Procurement',
+    approver: 'Procurement Owner',
+    sla: '7 business days',
+    evidence: ['Specification', 'Vendor shortlist', 'Comparison notes'],
+    icon: i(<GitPullRequest size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'subscription-renewal',
+    title: 'Subscription Renewal',
+    description: 'Review and approve a SaaS / licence renewal before auto-renew or cancellation deadline.',
+    domain: 'Procurement',
+    approver: 'Procurement Owner',
+    sla: '5 business days',
+    evidence: ['Renewal terms', 'Usage review'],
+    icon: i(<RefreshCw size={20} strokeWidth={1.5} />),
+  },
+
+  // ── Project & Service ──────────────────────────────────────────────────────
+  {
+    id: 'project-cost',
+    title: 'Project Cost Request',
+    description: 'Raise a cost item against an active project — staff time, vendor cost, tool cost, or other direct project spend.',
+    domain: 'Project & Service',
+    approver: 'Project / Service Economics Owner',
+    sla: '2 business days',
+    evidence: ['Cost breakdown', 'Project link'],
+    icon: i(<DollarSign size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'service-billing',
+    title: 'Service Billing Request',
+    description: 'Trigger a client billing event when a delivery milestone is reached, ready for Finance invoicing.',
+    domain: 'Project & Service',
+    approver: 'Finance Control Owner',
+    sla: '3 business days',
+    evidence: ['Milestone evidence', 'Client approval'],
+    icon: i(<Briefcase size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'delivery-support',
+    title: 'Delivery Support Request',
+    description: 'Request internal delivery support — resourcing, blocker resolution, or escalation on an active project.',
+    domain: 'Project & Service',
+    approver: 'Project / Service Owner',
+    sla: '1 business day',
+    evidence: ['Issue description', 'Affected milestones'],
+    icon: i(<Layers size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'project-linked-procurement',
+    title: 'Project-linked Procurement',
+    description: 'Raise a purchase tracked against a specific project budget and delivery commitment.',
+    domain: 'Project & Service',
+    approver: 'Project Owner + Finance Control Owner',
+    sla: '3 business days',
+    evidence: ['Supplier quote', 'Project link', 'Budget reference'],
+    icon: i(<LinkIcon size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'milestone-update',
+    title: 'Milestone Update Request',
+    description: 'Request a status change, date shift, or completion update on a project milestone.',
+    domain: 'Project & Service',
+    approver: 'Project / Service Owner',
+    sla: '1 business day',
+    evidence: ['Milestone reference', 'Update reason'],
+    ctaRoute: '/milestone-tracker',
+    icon: i(<Flag size={20} strokeWidth={1.5} />),
+  },
+
+  // ── Admin & Asset ──────────────────────────────────────────────────────────
+  {
+    id: 'office-supplies',
+    title: 'Office Supplies Request',
+    description: 'Request office supplies, stationery, or consumables for a DQ entity or location.',
+    domain: 'Admin & Asset',
+    approver: 'Admin / Procurement Ops',
+    sla: '2 business days',
+    evidence: ['Items list', 'Justification'],
+    icon: i(<Package size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'equipment-request',
+    title: 'Equipment / Asset Request',
+    description: 'Request laptops, peripherals, or DQ-managed equipment — creates an asset record on approval.',
+    domain: 'Admin & Asset',
+    approver: 'Procurement Owner',
+    sla: '5 business days',
+    evidence: ['Item specification', 'Custodian', 'Cost reference'],
+    icon: i(<HardDrive size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'asset-assignment',
+    title: 'Asset Assignment / Return',
+    description: 'Reassign a tracked asset between custodians, or mark as returned, retired, or disposed.',
+    domain: 'Admin & Asset',
+    approver: 'Admin Owner',
+    sla: '1 business day',
+    evidence: ['Asset ID', 'New custodian'],
+    icon: i(<UserPlus size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'travel-admin',
+    title: 'Travel / Admin Request',
+    description: 'Raise a travel, visa, or admin support request — captures cost estimate, per-diem, and approval route.',
+    domain: 'Admin & Asset',
+    approver: 'Finance Control Owner',
+    sla: '5 business days',
+    evidence: ['Travel details', 'Cost estimate', 'Per-diem breakdown'],
+    icon: i(<Plane size={20} strokeWidth={1.5} />),
+  },
+
+  // ── Master Data ────────────────────────────────────────────────────────────
+  {
+    id: 'vendor-data-change',
+    title: 'Vendor Data Change',
+    description: 'Update a vendor record — payment terms, banking, category, status, or compliance evidence.',
+    domain: 'Master Data',
+    approver: 'BC Integration Steward',
+    sla: '2 business days',
+    evidence: ['Change reason', 'Updated fields', 'Supporting docs'],
+    icon: i(<Building size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'cost-centre-change',
+    title: 'Cost Centre / Category Change',
+    description: 'Add, rename, or retire a cost centre, expense category, or procurement category.',
+    domain: 'Master Data',
+    approver: 'Finance Control Owner',
+    sla: '3 business days',
+    evidence: ['Justification', 'Effective date'],
+    icon: i(<Tag size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'user-role-change',
+    title: 'User / Role Change',
+    description: 'Request a new user, role assignment, delegation, or permission change for a team member.',
+    domain: 'Master Data',
+    approver: 'Platform Administrator',
+    sla: '2 business days',
+    evidence: ['Role specification', 'Manager approval'],
+    icon: i(<UserCog size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'project-entity-change',
+    title: 'Project / Entity Change',
+    description: 'Create a new project, change project status, or update an entity / geography master record.',
+    domain: 'Master Data',
+    approver: 'Platform Administrator',
+    sla: '3 business days',
+    evidence: ['Change rationale', 'Impact analysis'],
+    icon: i(<FolderOpen size={20} strokeWidth={1.5} />),
+  },
+
+  // ── Integration ────────────────────────────────────────────────────────────
+  {
+    id: 'bc-sync-issue',
+    title: 'BC Sync Issue',
+    description: 'Report a Business Central sync failure for an invoice, vendor, purchase, or cost centre record.',
+    domain: 'Integration',
+    approver: 'BC Integration Steward',
+    sla: '1 business day',
+    evidence: ['Error message', 'Affected record ID'],
+    icon: i(<Activity size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'api-mapping-issue',
+    title: 'API / Mapping Issue',
+    description: 'Report an API endpoint or field mapping problem between DWS.04 and Business Central.',
+    domain: 'Integration',
+    approver: 'BC Integration Steward',
+    sla: '2 business days',
+    evidence: ['Endpoint', 'Expected vs actual'],
+    icon: i(<Code size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'access-request',
+    title: 'Access / Permission Request',
+    description: 'Request a new permission, role assignment, or scope expansion for the DWS.04 platform.',
+    domain: 'Integration',
+    approver: 'Platform Administrator',
+    sla: '2 business days',
+    evidence: ['Role needed', 'Manager approval'],
+    icon: i(<Key size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'workflow-issue',
+    title: 'Workflow / Threshold Issue',
+    description: 'Report a workflow misrouting, approval threshold problem, or escalation rule that needs review.',
+    domain: 'Integration',
+    approver: 'Platform Administrator',
+    sla: '3 business days',
+    evidence: ['Issue description', 'Affected workflow'],
+    icon: i(<GitMerge size={20} strokeWidth={1.5} />),
+  },
+]
+
+export const domains: RequestDomain[] = [
+  'Finance',
+  'Procurement',
+  'Project & Service',
+  'Admin & Asset',
+  'Master Data',
+  'Integration',
+]
