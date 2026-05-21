@@ -586,6 +586,7 @@ export const financialHealth = {
     { bucket: '90+ days', amount: 0 },
   ],
   workingCapital: {
+    cashPosition: 728500,
     currentAssets: 870000,
     currentLiabilities: 224000,
     workingCapital: 646000,

@@ -61,9 +61,11 @@ export default function FinancialHealthReport() {
       </p>
 
       {/* Top-line tiles */}
-      <div className="grid grid-cols-3 gap-4 mb-6">
-        <SummaryTile label="Working Capital (AED)" value={fmt(fh.workingCapital.workingCapital)} color="navy" />
-        <SummaryTile label="AR Outstanding (AED)" value={fmt(arTotal)} color="green" />
+      <div className="grid grid-cols-5 gap-4 mb-6">
+        <SummaryTile label="Cash Position (AED)" value={fmt(fh.workingCapital.cashPosition)} color="navy" />
+        <SummaryTile label="Total Current Assets (AED)" value={fmt(fh.workingCapital.currentAssets)} color="navy" />
+        <SummaryTile label="Working Capital (AED)" value={fmt(fh.workingCapital.workingCapital)} color="green" />
+        <SummaryTile label="AR Outstanding (AED)" value={fmt(arTotal)} color="blue" />
         <SummaryTile label="AP Outstanding (AED)" value={fmt(apTotal)} color="red" />
       </div>
 
@@ -103,6 +105,10 @@ export default function FinancialHealthReport() {
         {/* 3. Working Capital */}
         <Section title="Working Capital">
           <div className="space-y-2.5 text-sm">
+            <div className="flex items-center justify-between">
+              <span className="text-text-muted">Cash & Bank</span>
+              <span className="font-mono font-semibold text-text-primary">AED {fmt(fh.workingCapital.cashPosition)}</span>
+            </div>
             <div className="flex items-center justify-between">
               <span className="text-text-muted">Current Assets</span>
               <span className="font-mono font-semibold text-text-primary">AED {fmt(fh.workingCapital.currentAssets)}</span>
