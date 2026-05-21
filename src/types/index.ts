@@ -127,6 +127,29 @@ export interface AuditEvent {
   timestamp: string
 }
 
+export type MilestoneStatus = 'Not Started' | 'In Progress' | 'Complete' | 'Overdue' | 'Delayed'
+
+export interface Milestone {
+  id: string
+  projectId: string
+  name: string
+  status: MilestoneStatus
+  dueDate: string
+  owner: string
+  completionPct: number
+}
+
+export interface Customer {
+  id: string
+  name: string
+  country: string
+  currency: string
+  billingTerms: string
+  status: 'Active' | 'Pending Onboarding' | 'Inactive'
+  arBalance: number
+  linkedProject?: string
+}
+
 export interface NavItem {
   label: string
   icon: string

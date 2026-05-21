@@ -8,6 +8,8 @@ import type {
   Subscription,
   SyncRecord,
   AuditEvent,
+  Milestone,
+  Customer,
 } from '../types'
 
 // ── Personas ────────────────────────────────────────────────────────────────
@@ -281,6 +283,87 @@ export const requests: Request[] = [
     linkedProject: 'PRJ-2403',
     evidence: [],
   },
+  {
+    id: 'REQ-2025-0049',
+    type: 'Budget Requisition',
+    description: 'Budget requisition: Q3 marketing campaign allocation',
+    requester: 'Jay Nair',
+    amount: 32000,
+    currency: 'AED',
+    status: 'Pending Approval',
+    approver: 'Mohammed Rashid',
+    submittedDate: '17 May 2026',
+    linkedProject: 'PRJ-2402',
+    evidence: [
+      { label: 'Campaign brief', checked: true, required: true },
+      { label: 'Cost breakdown', checked: true, required: true },
+    ],
+  },
+  {
+    id: 'REQ-2025-0050',
+    type: 'Customer Onboarding',
+    description: 'Customer onboarding: Galp Energia (Portugal)',
+    requester: 'Sara Pereira',
+    amount: 0,
+    currency: 'EUR',
+    status: 'Evidence Pending',
+    approver: 'Mohammed Rashid',
+    submittedDate: '16 May 2026',
+    notes: 'Missing: VAT registration cert',
+    evidence: [
+      { label: 'Company registration', checked: true, required: true },
+      { label: 'VAT registration cert', checked: false, required: true },
+      { label: 'Billing contact details', checked: true, required: true },
+      { label: 'Signed MSA', checked: true, required: true },
+    ],
+  },
+  {
+    id: 'REQ-2025-0051',
+    type: 'Budget Requisition',
+    description: 'Budget requisition: BI tooling pilot allocation',
+    requester: 'Sara Pereira',
+    amount: 18500,
+    currency: 'AED',
+    status: 'Draft',
+    approver: 'Mohammed Rashid',
+    submittedDate: '18 May 2026',
+    linkedProject: 'PRJ-2404',
+    evidence: [
+      { label: 'Tool comparison', checked: true, required: true },
+      { label: 'Pilot scope', checked: false, required: true },
+    ],
+  },
+  {
+    id: 'REQ-2025-0052',
+    type: 'Budget Requisition',
+    description: 'Budget requisition: Senior engineer hiring budget',
+    requester: 'Mohammed Rashid',
+    amount: 95000,
+    currency: 'AED',
+    status: 'Approved',
+    approver: 'Aisha Khalid',
+    submittedDate: '10 May 2026',
+    linkedProject: 'PRJ-2401',
+    evidence: [
+      { label: 'Role specification', checked: true, required: true },
+      { label: 'Cost-to-serve impact', checked: true, required: true },
+    ],
+  },
+  {
+    id: 'REQ-2025-0053',
+    type: 'Budget Requisition',
+    description: 'Budget requisition: Q3 vendor sponsorship',
+    requester: 'Jay Nair',
+    amount: 12000,
+    currency: 'AED',
+    status: 'Rejected',
+    approver: 'Mohammed Rashid',
+    submittedDate: '8 May 2026',
+    notes: 'Insufficient business case — resubmit with measurable outcomes',
+    evidence: [
+      { label: 'Sponsorship brief', checked: true, required: true },
+    ],
+  },
 ]
 
 // ── Subscriptions ─────────────────────────────────────────────────────────────
@@ -453,3 +536,101 @@ export const auditEvents: AuditEvent[] = [
     timestamp: '14 May 2026 16:05',
   },
 ]
+
+// ── Milestones ───────────────────────────────────────────────────────────────
+export const milestones: Milestone[] = [
+  // PRJ-2401 DXP Phase 3 Build
+  { id: 'M-001', projectId: 'PRJ-2401', name: 'Discovery Complete', status: 'Complete', dueDate: '15 Apr 2026', owner: 'Layla Seitkali', completionPct: 100 },
+  { id: 'M-002', projectId: 'PRJ-2401', name: 'MVP Demo', status: 'In Progress', dueDate: '5 Jun 2026', owner: 'Layla Seitkali', completionPct: 65 },
+  { id: 'M-003', projectId: 'PRJ-2401', name: 'UAT Sign-off', status: 'Not Started', dueDate: '30 Jul 2026', owner: 'Layla Seitkali', completionPct: 0 },
+  // PRJ-2402 DWS.04 Platform Prototype
+  { id: 'M-004', projectId: 'PRJ-2402', name: 'BRS Approved', status: 'Complete', dueDate: '18 May 2026', owner: 'Jay Nair', completionPct: 100 },
+  { id: 'M-005', projectId: 'PRJ-2402', name: 'Shell Prototype', status: 'In Progress', dueDate: '30 May 2026', owner: 'Jay Nair', completionPct: 80 },
+  { id: 'M-006', projectId: 'PRJ-2402', name: 'Full Prototype Review', status: 'Not Started', dueDate: '25 Jun 2026', owner: 'Jay Nair', completionPct: 0 },
+  // PRJ-2403 Client: Noor Retail DXP
+  { id: 'M-007', projectId: 'PRJ-2403', name: 'Contract Signed', status: 'Complete', dueDate: '12 Mar 2026', owner: 'Mohammed Rashid', completionPct: 100 },
+  { id: 'M-008', projectId: 'PRJ-2403', name: 'Design System Delivered', status: 'Overdue', dueDate: '14 May 2026', owner: 'Mohammed Rashid', completionPct: 70 },
+  { id: 'M-009', projectId: 'PRJ-2403', name: 'Phase 1 Go-live', status: 'In Progress', dueDate: '20 Jul 2026', owner: 'Mohammed Rashid', completionPct: 35 },
+  // PRJ-2404 DIA Intelligence Layer
+  { id: 'M-010', projectId: 'PRJ-2404', name: 'Planning Workshop', status: 'In Progress', dueDate: '28 May 2026', owner: 'Sara Pereira', completionPct: 50 },
+  { id: 'M-011', projectId: 'PRJ-2404', name: 'Architecture Sign-off', status: 'Not Started', dueDate: '15 Jun 2026', owner: 'Sara Pereira', completionPct: 0 },
+  { id: 'M-012', projectId: 'PRJ-2404', name: 'First Prototype', status: 'Not Started', dueDate: '1 Aug 2026', owner: 'Sara Pereira', completionPct: 0 },
+  // PRJ-2405 SDO Design System
+  { id: 'M-013', projectId: 'PRJ-2405', name: 'Token Spec', status: 'Complete', dueDate: '10 Apr 2026', owner: 'Aisha Khalid', completionPct: 100 },
+  { id: 'M-014', projectId: 'PRJ-2405', name: 'Component Library v1', status: 'Delayed', dueDate: '12 May 2026', owner: 'Aisha Khalid', completionPct: 60 },
+  { id: 'M-015', projectId: 'PRJ-2405', name: 'Adoption Playbook', status: 'In Progress', dueDate: '30 Jun 2026', owner: 'Aisha Khalid', completionPct: 25 },
+]
+
+// ── Customers ────────────────────────────────────────────────────────────────
+export const customers: Customer[] = [
+  { id: 'CUST-001', name: 'Noor Retail', country: 'UAE', currency: 'AED', billingTerms: 'Net 30', status: 'Active', arBalance: 240000, linkedProject: 'PRJ-2403' },
+  { id: 'CUST-002', name: 'Mubadala Innovations', country: 'UAE', currency: 'AED', billingTerms: 'Net 45', status: 'Active', arBalance: 120000 },
+  { id: 'CUST-003', name: 'Etisalat Digital', country: 'UAE', currency: 'AED', billingTerms: 'Net 30', status: 'Active', arBalance: 95000 },
+  { id: 'CUST-004', name: 'AlFuttaim Group', country: 'UAE', currency: 'AED', billingTerms: 'Net 60', status: 'Active', arBalance: 165000 },
+  { id: 'CUST-005', name: 'Galp Energia', country: 'Portugal', currency: 'EUR', billingTerms: 'Net 30', status: 'Pending Onboarding', arBalance: 0 },
+  { id: 'CUST-006', name: 'Kenya Commercial Bank', country: 'Kenya', currency: 'KES', billingTerms: 'Net 30', status: 'Active', arBalance: 850000 },
+]
+
+// ── Financial Health snapshot ────────────────────────────────────────────────
+export const financialHealth = {
+  arAging: [
+    { bucket: '0–30 days', amount: 384000 },
+    { bucket: '31–60 days', amount: 156000 },
+    { bucket: '61–90 days', amount: 89000 },
+    { bucket: '90+ days', amount: 41000 },
+  ],
+  apAging: [
+    { bucket: '0–30 days', amount: 142000 },
+    { bucket: '31–60 days', amount: 38000 },
+    { bucket: '61–90 days', amount: 6400 },
+    { bucket: '90+ days', amount: 0 },
+  ],
+  workingCapital: {
+    currentAssets: 870000,
+    currentLiabilities: 224000,
+    workingCapital: 646000,
+    currentRatio: 3.88,
+  },
+  revenueForecast: [
+    { month: 'May 2026', amount: 310000 },
+    { month: 'Jun 2026', amount: 340000 },
+    { month: 'Jul 2026', amount: 295000 },
+    { month: 'Aug 2026', amount: 380000 },
+    { month: 'Sep 2026', amount: 410000 },
+    { month: 'Oct 2026', amount: 425000 },
+  ],
+  expenseForecast: [
+    { month: 'May 2026', amount: 245000 },
+    { month: 'Jun 2026', amount: 270000 },
+    { month: 'Jul 2026', amount: 255000 },
+    { month: 'Aug 2026', amount: 290000 },
+    { month: 'Sep 2026', amount: 305000 },
+    { month: 'Oct 2026', amount: 310000 },
+  ],
+  trialBalance: [
+    { account: 'Cash & Bank', debit: 728500, credit: 0 },
+    { account: 'Accounts Receivable', debit: 670000, credit: 0 },
+    { account: 'Fixed Assets (net)', debit: 142000, credit: 0 },
+    { account: 'Accounts Payable', debit: 0, credit: 186400 },
+    { account: 'Accrued Expenses', debit: 0, credit: 37800 },
+    { account: 'Share Capital', debit: 0, credit: 500000 },
+    { account: 'Retained Earnings', debit: 0, credit: 816300 },
+    { account: 'Revenue YTD', debit: 0, credit: 1820000 },
+    { account: 'Expenses YTD', debit: 1240000, credit: 0 },
+  ],
+  expenseSummary: [
+    { category: 'Salaries & contractor costs', amount: 745000, pctOfTotal: 60 },
+    { category: 'SaaS & subscriptions', amount: 286000, pctOfTotal: 23 },
+    { category: 'Vendor services', amount: 134000, pctOfTotal: 11 },
+    { category: 'Office & admin', amount: 46500, pctOfTotal: 4 },
+    { category: 'Travel', amount: 28500, pctOfTotal: 2 },
+  ],
+  vatCredit: {
+    inputVatQ2: 62400,
+    outputVatQ2: 91000,
+    netVatPayable: 28600,
+    openCredits: 14200,
+    nextFilingDue: '28 Jul 2026',
+  },
+} as const
+

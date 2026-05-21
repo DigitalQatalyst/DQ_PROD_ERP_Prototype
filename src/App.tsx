@@ -46,7 +46,13 @@ import ProjectServiceRegister from './pages/ProjectServiceRegister'
 import ProjectEconomicsWorkspace from './pages/ProjectEconomicsWorkspace'
 import ProjectLinkedCostView from './pages/ProjectLinkedCostView'
 import ServiceBillingReadiness from './pages/ServiceBillingReadiness'
-import DeliveryCommitments from './pages/DeliveryCommitments'
+import ProjectMilestoneTracker from './pages/ProjectMilestoneTracker'
+
+// New finance + customer + intelligence pages
+import CustomerMaster from './pages/CustomerMaster'
+import CustomerOnboarding from './pages/CustomerOnboarding'
+import FinancialHealthReport from './pages/FinancialHealthReport'
+import BudgetRequisitions from './pages/BudgetRequisitions'
 
 // Request & Approval Governance group
 import ApprovalRulesThresholds from './pages/ApprovalRulesThresholds'
@@ -74,6 +80,15 @@ import WorkflowConfiguration from './pages/WorkflowConfiguration'
 import AIGuardrailsAuditLog from './pages/AIGuardrailsAuditLog'
 import ChangeRequestRegister from './pages/ChangeRequestRegister'
 import ReleaseEnvironmentControl from './pages/ReleaseEnvironmentControl'
+
+// S01 Marketplace — BRS Stage 1 catalogues (F-S1-01..07)
+import FinanceServicesCatalogue from './pages/marketplace/FinanceServicesCatalogue'
+import ProcurementServicesCatalogue from './pages/marketplace/ProcurementServicesCatalogue'
+import ProjectServiceCatalogue from './pages/marketplace/ProjectServiceCatalogue'
+import AdminAssetCatalogue from './pages/marketplace/AdminAssetCatalogue'
+import MasterDataCatalogue from './pages/marketplace/MasterDataCatalogue'
+import IntegrationSupportCatalogue from './pages/marketplace/IntegrationSupportCatalogue'
+import DiscoverySearch from './pages/marketplace/DiscoverySearch'
 
 // Placeholder for unmatched routes only
 import PlaceholderPage from './components/PlaceholderPage'
@@ -105,6 +120,15 @@ export default function App() {
               <Route path="/orientation" element={<PlatformHome />} />
               <Route path="/role-switch" element={<RoleEntitySwitch />} />
 
+              {/* S01 Marketplace — BRS Stage 1 catalogues */}
+              <Route path="/marketplace/finance" element={<FinanceServicesCatalogue />} />
+              <Route path="/marketplace/procurement" element={<ProcurementServicesCatalogue />} />
+              <Route path="/marketplace/project-service" element={<ProjectServiceCatalogue />} />
+              <Route path="/marketplace/admin-assets" element={<AdminAssetCatalogue />} />
+              <Route path="/marketplace/master-data" element={<MasterDataCatalogue />} />
+              <Route path="/marketplace/integration" element={<IntegrationSupportCatalogue />} />
+              <Route path="/marketplace/search" element={<DiscoverySearch />} />
+
               {/* My Work group */}
               <Route path="/my-tasks" element={<MyTasks />} />
               <Route path="/clarifications" element={<Clarifications />} />
@@ -132,7 +156,17 @@ export default function App() {
               <Route path="/project-economics" element={<ProjectEconomicsWorkspace />} />
               <Route path="/project-costs" element={<ProjectLinkedCostView />} />
               <Route path="/billing-readiness" element={<ServiceBillingReadiness />} />
-              <Route path="/delivery-commitments" element={<DeliveryCommitments />} />
+              <Route path="/milestone-tracker" element={<ProjectMilestoneTracker />} />
+
+              {/* Customer master & onboarding */}
+              <Route path="/customer-master" element={<CustomerMaster />} />
+              <Route path="/customer-onboarding" element={<CustomerOnboarding />} />
+
+              {/* Financial Health Report */}
+              <Route path="/financial-health" element={<FinancialHealthReport />} />
+
+              {/* Budget Requisitions tracker */}
+              <Route path="/budget-requisitions" element={<BudgetRequisitions />} />
 
               {/* Request & Approval Governance */}
               <Route path="/approval-rules" element={<ApprovalRulesThresholds />} />
