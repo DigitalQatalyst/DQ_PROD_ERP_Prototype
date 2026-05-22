@@ -10,6 +10,13 @@ import type {
   AuditEvent,
   Milestone,
   Customer,
+  Employee,
+  LeaveRequest,
+  HRRequest,
+  EmployeeTransition,
+  InventoryItem,
+  InventoryMovement,
+  AdminRequest,
 } from '../types'
 
 // ── Personas ────────────────────────────────────────────────────────────────
@@ -67,6 +74,42 @@ export const personas: Persona[] = [
     roleLabel: 'BC Integration Steward',
     landingRoute: '/bc-integration',
     navDomains: ['Home', 'My Work', 'Master Data & Structure', 'Intelligence', 'Platform Administration'],
+  },
+  {
+    id: 'FH',
+    initials: 'FH',
+    name: 'Fatima Bin Hammad',
+    role: 'HR-OWN',
+    roleLabel: 'HR & People Operations Owner',
+    landingRoute: '/hr-home',
+    navDomains: ['Home', 'My Work', 'HR & People Operations', 'Inventory & Assets', 'Administration & Back Office', 'Request & Approval Governance', 'Master Data & Structure', 'Intelligence'],
+  },
+  {
+    id: 'RA',
+    initials: 'RA',
+    name: 'Rashid Ahmed',
+    role: 'INV-OWN',
+    roleLabel: 'Inventory & Asset Control Owner',
+    landingRoute: '/inventory-home',
+    navDomains: ['Home', 'My Work', 'Inventory & Assets', 'Procurement & Vendor Operations', 'Administration & Back Office', 'Request & Approval Governance', 'Master Data & Structure', 'Intelligence'],
+  },
+  {
+    id: 'MS',
+    initials: 'MS',
+    name: 'Maya Sharma',
+    role: 'ADM-OWN',
+    roleLabel: 'Administration & Back-Office Owner',
+    landingRoute: '/backoffice-home',
+    navDomains: ['Home', 'My Work', 'Administration & Back Office', 'HR & People Operations', 'Inventory & Assets', 'Procurement & Vendor Operations', 'Request & Approval Governance', 'Intelligence'],
+  },
+  {
+    id: 'YM',
+    initials: 'YM',
+    name: 'Yasmin Al-Mansoori',
+    role: 'PROC-OWN',
+    roleLabel: 'Procurement & Vendor Control Owner',
+    landingRoute: '/procurement',
+    navDomains: ['Home', 'My Work', 'Procurement & Vendor Operations', 'Inventory & Assets', 'Finance Control', 'Request & Approval Governance', 'Master Data & Structure', 'Intelligence'],
   },
 ]
 
@@ -634,4 +677,113 @@ export const financialHealth = {
     nextFilingDue: '28 Jul 2026',
   },
 } as const
+
+// ── Employees ────────────────────────────────────────────────────────────────
+export const employees: Employee[] = [
+  { id: 'E-001', name: 'Aisha Khalid', role: 'CEO', entity: 'DigitalQatalyst MENA', costCentre: 'CC-001', status: 'Active', startDate: '03 Jan 2022', assetsAssigned: 2, leaveBalanceDays: 18 },
+  { id: 'E-002', name: 'Mohammed Rashid', role: 'Finance Lead', entity: 'DigitalQatalyst MENA', costCentre: 'CC-002', managerId: 'E-001', status: 'Active', startDate: '15 Mar 2022', assetsAssigned: 2, leaveBalanceDays: 14 },
+  { id: 'E-003', name: 'Sara Pereira', role: 'Finance Analyst', entity: 'DigitalQatalyst Iberia', costCentre: 'CC-002', managerId: 'E-002', status: 'Active', startDate: '01 Sep 2023', assetsAssigned: 1, leaveBalanceDays: 21 },
+  { id: 'E-004', name: 'Jay Nair', role: 'Project Coordinator', entity: 'DigitalQatalyst MENA', costCentre: 'CC-005', managerId: 'E-006', status: 'Active', startDate: '12 Feb 2024', assetsAssigned: 1, leaveBalanceDays: 16 },
+  { id: 'E-005', name: 'Tariq Al-Amin', role: 'Platform Administrator', entity: 'DigitalQatalyst MENA', costCentre: 'CC-003', managerId: 'E-006', status: 'Active', startDate: '20 May 2023', assetsAssigned: 3, leaveBalanceDays: 12 },
+  { id: 'E-006', name: 'Layla Seitkali', role: 'Tech Lead', entity: 'DigitalQatalyst East Africa', costCentre: 'CC-003', managerId: 'E-001', status: 'Active', startDate: '08 Aug 2022', assetsAssigned: 2, leaveBalanceDays: 9 },
+  { id: 'E-007', name: 'Fatima Bin Hammad', role: 'HR & People Lead', entity: 'DigitalQatalyst MENA', costCentre: 'CC-002', managerId: 'E-001', status: 'Active', startDate: '01 Apr 2023', assetsAssigned: 1, leaveBalanceDays: 20 },
+  { id: 'E-008', name: 'Rashid Ahmed', role: 'Operations & Inventory Lead', entity: 'DigitalQatalyst MENA', costCentre: 'CC-002', managerId: 'E-002', status: 'Active', startDate: '14 Jun 2023', assetsAssigned: 2, leaveBalanceDays: 17 },
+  { id: 'E-009', name: 'Maya Sharma', role: 'Office Manager', entity: 'DigitalQatalyst MENA', costCentre: 'CC-002', managerId: 'E-007', status: 'Active', startDate: '03 Nov 2023', assetsAssigned: 1, leaveBalanceDays: 22 },
+  { id: 'E-010', name: 'Yasmin Al-Mansoori', role: 'Procurement Lead', entity: 'DigitalQatalyst MENA', costCentre: 'CC-002', managerId: 'E-002', status: 'Active', startDate: '17 Sep 2023', assetsAssigned: 1, leaveBalanceDays: 15 },
+  { id: 'E-011', name: 'Daniel Kimani', role: 'Junior Engineer', entity: 'DigitalQatalyst East Africa', costCentre: 'CC-003', managerId: 'E-006', status: 'Onboarding', startDate: '25 May 2026', assetsAssigned: 0, leaveBalanceDays: 0 },
+  { id: 'E-012', name: 'Priya Menon', role: 'Service Designer', entity: 'DigitalQatalyst MENA', costCentre: 'CC-005', managerId: 'E-001', status: 'Offboarding', startDate: '11 Jan 2023', assetsAssigned: 2, leaveBalanceDays: 4 },
+]
+
+// ── Leave Requests ───────────────────────────────────────────────────────────
+export const leaveRequests: LeaveRequest[] = [
+  { id: 'LV-001', employeeId: 'E-003', type: 'Annual', startDate: '02 Jun 2026', endDate: '06 Jun 2026', days: 5, status: 'Approved', approver: 'Mohammed Rashid' },
+  { id: 'LV-002', employeeId: 'E-004', type: 'Annual', startDate: '15 Jun 2026', endDate: '19 Jun 2026', days: 5, status: 'Pending Approval', approver: 'Layla Seitkali', reason: 'Family vacation' },
+  { id: 'LV-003', employeeId: 'E-005', type: 'Sick', startDate: '20 May 2026', endDate: '21 May 2026', days: 2, status: 'Approved', approver: 'Layla Seitkali' },
+  { id: 'LV-004', employeeId: 'E-009', type: 'Annual', startDate: '01 Jul 2026', endDate: '12 Jul 2026', days: 10, status: 'Pending Approval', approver: 'Fatima Bin Hammad', reason: 'Wedding + travel' },
+  { id: 'LV-005', employeeId: 'E-008', type: 'Parental', startDate: '05 Jun 2026', endDate: '03 Jul 2026', days: 21, status: 'Approved', approver: 'Mohammed Rashid', reason: 'Paternity leave' },
+  { id: 'LV-006', employeeId: 'E-011', type: 'Unpaid', startDate: '10 Jun 2026', endDate: '11 Jun 2026', days: 2, status: 'Rejected', approver: 'Fatima Bin Hammad', reason: 'During onboarding period' },
+]
+
+// ── HR Requests ──────────────────────────────────────────────────────────────
+export const hrRequests: HRRequest[] = [
+  { id: 'HR-001', type: 'Salary Certificate', description: 'Salary certificate for mortgage application', requester: 'Sara Pereira', employeeId: 'E-003', status: 'Fulfilled', owner: 'Fatima Bin Hammad', submittedDate: '10 May 2026' },
+  { id: 'HR-002', type: 'Employment Letter', description: 'Embassy letter for UK visa', requester: 'Jay Nair', employeeId: 'E-004', status: 'In Review', owner: 'Fatima Bin Hammad', submittedDate: '16 May 2026', dueDate: '23 May 2026' },
+  { id: 'HR-003', type: 'Onboarding Support', description: 'Onboarding pack for new starter Daniel Kimani', requester: 'Layla Seitkali', employeeId: 'E-011', status: 'In Review', owner: 'Fatima Bin Hammad', submittedDate: '18 May 2026', dueDate: '25 May 2026' },
+  { id: 'HR-004', type: 'Offboarding Clearance', description: 'Final clearance for Priya Menon', requester: 'Aisha Khalid', employeeId: 'E-012', status: 'In Review', owner: 'Fatima Bin Hammad', submittedDate: '15 May 2026', dueDate: '30 May 2026', notes: 'Pending: laptop return, access revocation' },
+  { id: 'HR-005', type: 'Employee Document', description: 'Updated emergency contact details', requester: 'Tariq Al-Amin', employeeId: 'E-005', status: 'Fulfilled', owner: 'Fatima Bin Hammad', submittedDate: '12 May 2026' },
+  { id: 'HR-006', type: 'HR Admin Support', description: 'Update bank details after change of account', requester: 'Mohammed Rashid', employeeId: 'E-002', status: 'Clarification Needed', owner: 'Fatima Bin Hammad', submittedDate: '14 May 2026', notes: 'Awaiting bank confirmation letter' },
+]
+
+// ── Employee Transitions (Onboarding / Offboarding) ──────────────────────────
+export const transitions: EmployeeTransition[] = [
+  {
+    id: 'TR-001', employeeId: 'E-011', type: 'Onboarding', startedDate: '20 May 2026', targetDate: '03 Jun 2026', status: 'In Progress',
+    tasks: [
+      { label: 'Contract signed', owner: 'Fatima Bin Hammad', done: true },
+      { label: 'Email + system access', owner: 'Tariq Al-Amin', done: true },
+      { label: 'Laptop assigned', owner: 'Rashid Ahmed', done: false },
+      { label: 'Office 365 licence', owner: 'Rashid Ahmed', done: false },
+      { label: 'Onboarding session booked', owner: 'Fatima Bin Hammad', done: true },
+      { label: 'Buddy assigned', owner: 'Layla Seitkali', done: false },
+    ],
+  },
+  {
+    id: 'TR-002', employeeId: 'E-012', type: 'Offboarding', startedDate: '15 May 2026', targetDate: '30 May 2026', status: 'In Progress',
+    tasks: [
+      { label: 'Resignation acknowledged', owner: 'Aisha Khalid', done: true },
+      { label: 'Knowledge transfer plan', owner: 'Aisha Khalid', done: true },
+      { label: 'Laptop return', owner: 'Rashid Ahmed', done: false },
+      { label: 'Access revoked', owner: 'Tariq Al-Amin', done: false },
+      { label: 'Final settlement', owner: 'Mohammed Rashid', done: false },
+      { label: 'Experience letter', owner: 'Fatima Bin Hammad', done: false },
+    ],
+  },
+  {
+    id: 'TR-003', employeeId: 'E-009', type: 'Onboarding', startedDate: '01 Nov 2023', targetDate: '14 Nov 2023', status: 'Complete',
+    tasks: [
+      { label: 'Contract signed', owner: 'Fatima Bin Hammad', done: true },
+      { label: 'Email + system access', owner: 'Tariq Al-Amin', done: true },
+      { label: 'Laptop assigned', owner: 'Rashid Ahmed', done: true },
+      { label: 'Onboarding session', owner: 'Fatima Bin Hammad', done: true },
+    ],
+  },
+]
+
+// ── Inventory Items ──────────────────────────────────────────────────────────
+export const inventoryItems: InventoryItem[] = [
+  // Consumables
+  { id: 'INV-001', name: 'A4 Printer Paper', subType: 'Consumable', location: 'UAE HQ Store', quantity: 24, reorderLevel: 10, unit: 'reams', status: 'In Stock' },
+  { id: 'INV-002', name: 'HP Toner Cartridge', subType: 'Consumable', location: 'UAE HQ Store', quantity: 3, reorderLevel: 5, unit: 'cartridges', status: 'Low Stock' },
+  { id: 'INV-003', name: 'Coffee Capsules', subType: 'Consumable', location: 'UAE HQ Pantry', quantity: 8, reorderLevel: 20, unit: 'boxes', status: 'Low Stock' },
+  { id: 'INV-004', name: 'Branded Notebooks', subType: 'Consumable', location: 'UAE HQ Store', quantity: 0, reorderLevel: 30, unit: 'pcs', status: 'Out of Stock' },
+  // Licences
+  { id: 'INV-005', name: 'Adobe Creative Cloud', subType: 'Licence', location: 'Digital', quantity: 10, unit: 'seats', custodian: 'Tariq Al-Amin', status: 'In Stock' },
+  { id: 'INV-006', name: 'Office 365 E3', subType: 'Licence', location: 'Digital', quantity: 25, unit: 'seats', custodian: 'Tariq Al-Amin', status: 'In Stock' },
+  { id: 'INV-007', name: 'Postman Enterprise', subType: 'Licence', location: 'Digital', quantity: 2, unit: 'seats', custodian: 'Layla Seitkali', status: 'Low Stock' },
+  // Devices
+  { id: 'INV-008', name: 'MacBook Pro M3 14"', subType: 'Device', location: 'Assigned', quantity: 6, unit: 'units', custodian: 'Various', status: 'In Stock' },
+  { id: 'INV-009', name: 'Dell XPS 15', subType: 'Device', location: 'Assigned', quantity: 4, unit: 'units', custodian: 'Various', status: 'In Stock' },
+  { id: 'INV-010', name: 'External 27" Monitor', subType: 'Device', location: 'UAE HQ Store', quantity: 2, reorderLevel: 3, unit: 'units', status: 'Low Stock' },
+  { id: 'INV-011', name: 'AirPods Pro', subType: 'Device', location: 'UAE HQ Store', quantity: 5, unit: 'units', status: 'In Stock' },
+]
+
+// ── Inventory Movements (recent) ─────────────────────────────────────────────
+export const inventoryMovements: InventoryMovement[] = [
+  { id: 'MV-001', itemId: 'INV-008', type: 'Issue', quantity: 1, date: '17 May 2026', performedBy: 'Rashid Ahmed', recipient: 'Daniel Kimani', notes: 'Onboarding TR-001' },
+  { id: 'MV-002', itemId: 'INV-002', type: 'Issue', quantity: 2, date: '16 May 2026', performedBy: 'Maya Sharma', recipient: 'Print room' },
+  { id: 'MV-003', itemId: 'INV-001', type: 'Receipt', quantity: 12, date: '14 May 2026', performedBy: 'Rashid Ahmed', notes: 'PO from Al Fardan Office Supp.' },
+  { id: 'MV-004', itemId: 'INV-008', type: 'Return', quantity: 1, date: '13 May 2026', performedBy: 'Rashid Ahmed', recipient: 'Priya Menon (offboarding pending)' },
+  { id: 'MV-005', itemId: 'INV-006', type: 'Issue', quantity: 1, date: '12 May 2026', performedBy: 'Tariq Al-Amin', recipient: 'Daniel Kimani' },
+]
+
+// ── Admin / Back-Office Requests ─────────────────────────────────────────────
+export const adminRequests: AdminRequest[] = [
+  { id: 'ADM-001', type: 'Travel', description: 'Flight + hotel for Nairobi client kickoff', requester: 'Layla Seitkali', status: 'In Progress', owner: 'Maya Sharma', submittedDate: '14 May 2026', dueDate: '22 May 2026', slaDays: 5, daysOpen: 8 },
+  { id: 'ADM-002', type: 'Visa / Admin', description: 'UK business visa for embassy meeting', requester: 'Jay Nair', status: 'Awaiting Evidence', owner: 'Maya Sharma', submittedDate: '13 May 2026', dueDate: '27 May 2026', slaDays: 7, daysOpen: 9, notes: 'Awaiting employment letter (HR-002)' },
+  { id: 'ADM-003', type: 'Office Supplies', description: 'Restock printer toner and A4 paper', requester: 'Maya Sharma', status: 'Fulfilled', owner: 'Rashid Ahmed', submittedDate: '08 May 2026', slaDays: 2, daysOpen: 4 },
+  { id: 'ADM-004', type: 'Document Support', description: 'Notarisation of MSA with Mazrui Holdings', requester: 'Mohammed Rashid', status: 'In Progress', owner: 'Maya Sharma', submittedDate: '17 May 2026', dueDate: '24 May 2026', slaDays: 4, daysOpen: 5 },
+  { id: 'ADM-005', type: 'Facilities', description: 'Meeting room AC service request', requester: 'Aisha Khalid', status: 'Submitted', owner: 'Maya Sharma', submittedDate: '18 May 2026', slaDays: 2, daysOpen: 4, notes: 'AC tripping during long meetings' },
+  { id: 'ADM-006', type: 'Business Card / Letter', description: 'New business cards for HR Lead', requester: 'Fatima Bin Hammad', status: 'Fulfilled', owner: 'Maya Sharma', submittedDate: '05 May 2026', slaDays: 5, daysOpen: 7 },
+  { id: 'ADM-007', type: 'Travel', description: 'Hotel + per-diem for Portugal entity setup visit', requester: 'Mohammed Rashid', status: 'Blocked', owner: 'Maya Sharma', submittedDate: '10 May 2026', dueDate: '20 May 2026', slaDays: 5, daysOpen: 12, notes: 'Awaiting Portugal entity bank confirmation' },
+]
 

@@ -13,7 +13,7 @@ export type BCSyncStatus = 'Synced' | 'Failed' | 'Pending' | 'Not Synced'
 
 export type SeverityLevel = 'High' | 'Warning' | 'Low'
 
-export type PersonaId = 'AK' | 'MR' | 'SP' | 'JN' | 'TA' | 'LS'
+export type PersonaId = 'AK' | 'MR' | 'SP' | 'JN' | 'TA' | 'LS' | 'FH' | 'RA' | 'MS' | 'YM'
 
 export type PersonaRole =
   | 'EXEC'
@@ -22,6 +22,10 @@ export type PersonaRole =
   | 'REQ'
   | 'ADMIN'
   | 'BC-STEWARD'
+  | 'HR-OWN'
+  | 'INV-OWN'
+  | 'ADM-OWN'
+  | 'PROC-OWN'
 
 export interface Persona {
   id: PersonaId
@@ -148,6 +152,125 @@ export interface Customer {
   status: 'Active' | 'Pending Onboarding' | 'Inactive'
   arBalance: number
   linkedProject?: string
+}
+
+// ── HR & People ──────────────────────────────────────────────────────────────
+export type EmployeeStatus = 'Active' | 'Onboarding' | 'Offboarding' | 'On Leave' | 'Inactive'
+
+export interface Employee {
+  id: string
+  name: string
+  role: string
+  entity: string
+  costCentre: string
+  managerId?: string
+  status: EmployeeStatus
+  startDate: string
+  assetsAssigned: number
+  leaveBalanceDays: number
+}
+
+export type LeaveType = 'Annual' | 'Sick' | 'Parental' | 'Unpaid' | 'Compassionate'
+
+export interface LeaveRequest {
+  id: string
+  employeeId: string
+  type: LeaveType
+  startDate: string
+  endDate: string
+  days: number
+  status: 'Pending Approval' | 'Approved' | 'Rejected' | 'Cancelled'
+  approver: string
+  reason?: string
+}
+
+export type HRRequestType =
+  | 'Employment Letter'
+  | 'Salary Certificate'
+  | 'Employee Document'
+  | 'Onboarding Support'
+  | 'Offboarding Clearance'
+  | 'HR Admin Support'
+
+export interface HRRequest {
+  id: string
+  type: HRRequestType
+  description: string
+  requester: string
+  employeeId?: string
+  status: 'Submitted' | 'In Review' | 'Approved' | 'Fulfilled' | 'Clarification Needed'
+  owner: string
+  submittedDate: string
+  dueDate?: string
+  notes?: string
+}
+
+export type TransitionType = 'Onboarding' | 'Offboarding'
+export interface TransitionTask {
+  label: string
+  owner: string
+  done: boolean
+}
+export interface EmployeeTransition {
+  id: string
+  employeeId: string
+  type: TransitionType
+  startedDate: string
+  targetDate: string
+  status: 'In Progress' | 'Blocked' | 'Complete'
+  tasks: TransitionTask[]
+}
+
+// ── Inventory & Assets ───────────────────────────────────────────────────────
+export type InventorySubType = 'Consumable' | 'Licence' | 'Device'
+
+export interface InventoryItem {
+  id: string
+  name: string
+  subType: InventorySubType
+  location: string
+  quantity: number
+  reorderLevel?: number
+  unit?: string
+  custodian?: string
+  linkedAssetId?: string
+  status: 'In Stock' | 'Low Stock' | 'Out of Stock' | 'Reserved'
+}
+
+export type InventoryMovementType = 'Issue' | 'Receipt' | 'Return' | 'Transfer' | 'Adjustment'
+
+export interface InventoryMovement {
+  id: string
+  itemId: string
+  type: InventoryMovementType
+  quantity: number
+  date: string
+  performedBy: string
+  recipient?: string
+  notes?: string
+}
+
+// ── Admin & Back-Office ─────────────────────────────────────────────────────
+export type AdminRequestType =
+  | 'Travel'
+  | 'Visa / Admin'
+  | 'Office Supplies'
+  | 'Document Support'
+  | 'Facilities'
+  | 'Business Card / Letter'
+
+export interface AdminRequest {
+  id: string
+  type: AdminRequestType
+  description: string
+  requester: string
+  status: 'Submitted' | 'In Progress' | 'Awaiting Evidence' | 'Fulfilled' | 'Blocked'
+  owner: string
+  submittedDate: string
+  dueDate?: string
+  slaDays: number
+  daysOpen: number
+  notes?: string
 }
 
 export interface NavItem {

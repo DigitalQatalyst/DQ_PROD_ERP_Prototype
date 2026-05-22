@@ -63,6 +63,45 @@ const briefs = [
     ],
     riskLevel: 'Low',
   },
+  {
+    id: 'AIB-006',
+    title: 'HR Routing & People Operations Brief',
+    generated: '22 May 2026 07:30',
+    domain: 'HR',
+    summary: 'TR-001 (Daniel Kimani onboarding) has 2 outstanding asset tasks 5 days before start date — laptop assignment and Office 365 licence. TR-002 (Priya Menon offboarding) is on track but laptop return is unresolved with 8 days remaining. HR-006 (Mohammed bank update) blocked on bank confirmation letter. Routing model 92% confident on all new HR request classifications this week.',
+    actions: [
+      'Escalate TR-001 asset tasks to Rashid Ahmed before 25 May',
+      'Confirm Priya Menon laptop return slot — currently blocking offboarding',
+      'Follow up Mohammed bank confirmation letter',
+    ],
+    riskLevel: 'Medium',
+  },
+  {
+    id: 'AIB-007',
+    title: 'Inventory & Asset Exception Brief',
+    generated: '22 May 2026 07:30',
+    domain: 'Inventory',
+    summary: '4 inventory items below reorder threshold: HP Toner (3/5), Coffee Capsules (8/20), Branded Notebooks (0/30), External Monitor (2/3). 1 asset (MacBook AST-MBP-004) flagged Return Pending — linked to active offboarding TR-002. Stock variance detected on 4 items in the latest physical count vs system (see Reconciliation Pack). Anthropic Postman Enterprise licence pool down to 2 seats.',
+    actions: [
+      'Raise Purchase Request via Al Fardan Office Supplies for toner + notebooks',
+      'Coordinate MacBook return with Priya Menon offboarding (TR-002)',
+      'Review stock count variances and approve adjustments',
+    ],
+    riskLevel: 'Medium',
+  },
+  {
+    id: 'AIB-008',
+    title: 'SLA Risk Prediction — Back-Office',
+    generated: '22 May 2026 07:30',
+    domain: 'Operations',
+    summary: 'Travel/Visa queue trending toward 65% SLA hit rate (target 90%) — 2 of 3 active items already breached. ADM-007 (Portugal travel) blocked 12 days on bank confirmation, materially affecting weekly KPI. Predictive model expects 1 additional breach this week without intervention. Maya Sharma owner-load at 6 open items, above sustainable threshold of 4. Travel volume up 35% week-over-week.',
+    actions: [
+      'Escalate ADM-007 Portugal entity bank confirmation to Finance Control Owner',
+      'Rebalance 2 admin tasks off Maya Sharma to reduce owner load',
+      'Update SLA expectations for Travel/Visa given current volume trend',
+    ],
+    riskLevel: 'High',
+  },
 ]
 
 const domainColor: Record<string, string> = {
@@ -71,6 +110,8 @@ const domainColor: Record<string, string> = {
   Project: 'bg-status-success-surface text-status-success-text',
   Operations: 'bg-status-info-surface text-status-info-text',
   Platform: 'bg-status-warning-surface text-status-warning-text',
+  HR: 'bg-status-info-surface text-status-info-text',
+  Inventory: 'bg-orange-50 text-dq-orange',
 }
 
 const riskColor: Record<string, string> = {
@@ -85,7 +126,7 @@ export default function AIBriefs() {
   return (
     <div>
       <h1 className="text-2xl font-bold text-text-primary mb-1">AI Briefs & Recommendations</h1>
-      <p className="text-sm text-text-muted mb-6">Periodic AI-generated operating briefs and recommended actions for finance, procurement, and project domains.</p>
+      <p className="text-sm text-text-muted mb-6">Periodic AI-generated operating briefs and recommended actions across finance, procurement, project economics, HR, inventory, and back-office operations.</p>
 
       <div className="flex items-center gap-2 mb-6 p-3 bg-navy-50 rounded-card border border-dq-navy/10">
         <Brain size={16} className="text-dq-navy" strokeWidth={1.5} />

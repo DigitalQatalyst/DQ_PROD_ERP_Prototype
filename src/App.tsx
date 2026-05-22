@@ -16,7 +16,7 @@ import ApprovalConsole from './pages/ApprovalConsole'
 import EscalationsExceptions from './pages/EscalationsExceptions'
 
 // Home group
-import OrientationGuide from './pages/OrientationGuide'
+import PersonalDashboard from './pages/PersonalDashboard'
 import RoleEntitySwitch from './pages/RoleEntitySwitch'
 
 // My Work group
@@ -53,6 +53,38 @@ import CustomerMaster from './pages/CustomerMaster'
 import CustomerOnboarding from './pages/CustomerOnboarding'
 import FinancialHealthReport from './pages/FinancialHealthReport'
 import BudgetRequisitions from './pages/BudgetRequisitions'
+
+// HR domain
+import HRHome from './pages/hr/HRHome'
+import EmployeeRegister from './pages/hr/EmployeeRegister'
+import HRServiceRequestCentre from './pages/hr/HRServiceRequestCentre'
+import HROperationsConsole from './pages/hr/HROperationsConsole'
+import LeaveManagement from './pages/hr/LeaveManagement'
+import OnboardingOffboardingTracker from './pages/hr/OnboardingOffboardingTracker'
+
+// Inventory & Assets domain
+import InventoryHome from './pages/inventory/InventoryHome'
+import InventoryRegister from './pages/inventory/InventoryRegister'
+import InventoryRequestTracker from './pages/inventory/InventoryRequestTracker'
+import InventoryOperationsConsole from './pages/inventory/InventoryOperationsConsole'
+import AssetCustodyConsole from './pages/inventory/AssetCustodyConsole'
+
+// Admin & Back-Office domain
+import BackOfficeHome from './pages/admin-back-office/BackOfficeHome'
+import TravelAdminRequestCentre from './pages/admin-back-office/TravelAdminRequestCentre'
+import OfficeServicesTracker from './pages/admin-back-office/OfficeServicesTracker'
+import BackOfficeFulfilmentConsole from './pages/admin-back-office/BackOfficeFulfilmentConsole'
+
+// Wave 2 — Governance
+import ApprovalGovernanceConsole from './pages/governance/ApprovalGovernanceConsole'
+import AuditPackBuilder from './pages/governance/AuditPackBuilder'
+import OperationalSLADashboard from './pages/governance/OperationalSLADashboard'
+
+// Wave 3 — Stage 4 specialised
+import WorkforceCostAnalytics from './pages/intelligence/WorkforceCostAnalytics'
+import BackOfficePerformance from './pages/intelligence/BackOfficePerformance'
+import InventoryReconciliationPack from './pages/inventory/InventoryReconciliationPack'
+import AssetLifecyclePack from './pages/inventory/AssetLifecyclePack'
 
 // Request & Approval Governance group
 import ApprovalRulesThresholds from './pages/ApprovalRulesThresholds'
@@ -128,7 +160,8 @@ export default function App() {
               <Route path="/approval-console" element={<ApprovalConsole />} />
               <Route path="/escalations" element={<EscalationsExceptions />} />
 
-              {/* Home group — /orientation and /role-switch redirect to home */}
+              {/* S00 Orientations — Welcome + Personal Dashboard */}
+              <Route path="/personal-dashboard" element={<PersonalDashboard />} />
               <Route path="/orientation" element={<PlatformHome />} />
               <Route path="/role-switch" element={<RoleEntitySwitch />} />
 
@@ -191,6 +224,38 @@ export default function App() {
 
               {/* Budget Requisitions tracker */}
               <Route path="/budget-requisitions" element={<BudgetRequisitions />} />
+
+              {/* HR & People Operations */}
+              <Route path="/hr-home" element={<HRHome />} />
+              <Route path="/employee-register" element={<EmployeeRegister />} />
+              <Route path="/hr-requests" element={<HRServiceRequestCentre />} />
+              <Route path="/hr-ops" element={<HROperationsConsole />} />
+              <Route path="/leave-management" element={<LeaveManagement />} />
+              <Route path="/onboarding-offboarding" element={<OnboardingOffboardingTracker />} />
+
+              {/* Inventory & Assets */}
+              <Route path="/inventory-home" element={<InventoryHome />} />
+              <Route path="/inventory-register" element={<InventoryRegister />} />
+              <Route path="/inventory-requests" element={<InventoryRequestTracker />} />
+              <Route path="/inventory-ops" element={<InventoryOperationsConsole />} />
+              <Route path="/asset-custody" element={<AssetCustodyConsole />} />
+
+              {/* Administration & Back-Office */}
+              <Route path="/backoffice-home" element={<BackOfficeHome />} />
+              <Route path="/travel-admin" element={<TravelAdminRequestCentre />} />
+              <Route path="/office-services" element={<OfficeServicesTracker />} />
+              <Route path="/backoffice-fulfilment" element={<BackOfficeFulfilmentConsole />} />
+
+              {/* Wave 2 — Governance */}
+              <Route path="/approval-governance" element={<ApprovalGovernanceConsole />} />
+              <Route path="/audit-pack-builder" element={<AuditPackBuilder />} />
+              <Route path="/sla-dashboard" element={<OperationalSLADashboard />} />
+
+              {/* Wave 3 — Stage 4 specialised */}
+              <Route path="/workforce-cost" element={<WorkforceCostAnalytics />} />
+              <Route path="/backoffice-performance" element={<BackOfficePerformance />} />
+              <Route path="/inventory-reconciliation" element={<InventoryReconciliationPack />} />
+              <Route path="/asset-lifecycle" element={<AssetLifecyclePack />} />
 
               {/* Request & Approval Governance */}
               <Route path="/approval-rules" element={<ApprovalRulesThresholds />} />

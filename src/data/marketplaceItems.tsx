@@ -4,13 +4,16 @@ import {
   ShoppingCart, GitPullRequest, RefreshCw, DollarSign, Briefcase, Layers,
   Link as LinkIcon, Flag, Package, HardDrive, Plane, Building, Tag,
   UserCog, FolderOpen, Activity, Code, Key, GitMerge,
+  Calendar, Mail, UserMinus, ScrollText, Wrench,
 } from 'lucide-react'
 
 export type RequestDomain =
   | 'Finance'
+  | 'HR & People'
   | 'Procurement'
+  | 'Inventory & Asset'
+  | 'Admin & Back-Office'
   | 'Project & Service'
-  | 'Admin & Asset'
   | 'Master Data'
   | 'Integration'
 
@@ -187,46 +190,163 @@ export const marketplaceItems: MarketplaceItem[] = [
     icon: i(<Flag size={20} strokeWidth={1.5} />),
   },
 
-  // ── Admin & Asset ──────────────────────────────────────────────────────────
+  // ── HR & People ────────────────────────────────────────────────────────────
   {
-    id: 'office-supplies',
-    title: 'Office Supplies Request',
-    description: 'Request office supplies, stationery, or consumables for a DQ entity or location.',
-    domain: 'Admin & Asset',
-    approver: 'Admin / Procurement Ops',
+    id: 'leave-request',
+    title: 'Leave Request',
+    description: 'Submit annual, sick, parental, unpaid, or compassionate leave — routed to your line manager for approval.',
+    domain: 'HR & People',
+    approver: 'Line Manager',
     sla: '2 business days',
-    evidence: ['Items list', 'Justification'],
-    icon: i(<Package size={20} strokeWidth={1.5} />),
+    evidence: ['Leave reason', 'Coverage plan (optional)'],
+    ctaRoute: '/leave-management',
+    icon: i(<Calendar size={20} strokeWidth={1.5} />),
   },
+  {
+    id: 'employment-letter',
+    title: 'Employment / Salary Letter',
+    description: 'Request an employment confirmation, salary certificate, or embassy letter for personal admin.',
+    domain: 'HR & People',
+    approver: 'HR Owner',
+    sla: '3 business days',
+    evidence: ['Purpose', 'Addressee details'],
+    ctaRoute: '/hr-requests',
+    icon: i(<Mail size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'onboarding-support',
+    title: 'Onboarding Support',
+    description: 'Onboarding pack for a new joiner — access setup, asset assignment, document signing, orientation booking.',
+    domain: 'HR & People',
+    approver: 'HR Owner',
+    sla: '5 business days',
+    evidence: ['Start date', 'Role spec', 'Hiring manager'],
+    ctaRoute: '/onboarding-offboarding',
+    icon: i(<UserPlus size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'offboarding-clearance',
+    title: 'Offboarding Clearance',
+    description: 'Initiate offboarding — access revocation, asset return, final settlement, and experience letter.',
+    domain: 'HR & People',
+    approver: 'HR Owner + Finance Control Owner',
+    sla: '10 business days',
+    evidence: ['Last working day', 'Knowledge transfer plan'],
+    ctaRoute: '/onboarding-offboarding',
+    icon: i(<UserMinus size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'employee-document',
+    title: 'Employee Document Support',
+    description: 'Update employee documents — bank details, emergency contact, address change, or document upload.',
+    domain: 'HR & People',
+    approver: 'HR Owner',
+    sla: '2 business days',
+    evidence: ['Updated fields', 'Supporting documents'],
+    ctaRoute: '/hr-requests',
+    icon: i(<ScrollText size={20} strokeWidth={1.5} />),
+  },
+
+  // ── Inventory & Asset ──────────────────────────────────────────────────────
   {
     id: 'equipment-request',
     title: 'Equipment / Asset Request',
     description: 'Request laptops, peripherals, or DQ-managed equipment — creates an asset record on approval.',
-    domain: 'Admin & Asset',
+    domain: 'Inventory & Asset',
     approver: 'Procurement Owner',
     sla: '5 business days',
     evidence: ['Item specification', 'Custodian', 'Cost reference'],
     icon: i(<HardDrive size={20} strokeWidth={1.5} />),
   },
   {
+    id: 'inventory-issue',
+    title: 'Inventory / Stock Issue',
+    description: 'Issue stock or consumables (paper, toner, supplies) from store to a team or location.',
+    domain: 'Inventory & Asset',
+    approver: 'Inventory Owner',
+    sla: '1 business day',
+    evidence: ['Item', 'Quantity', 'Recipient'],
+    ctaRoute: '/inventory-requests',
+    icon: i(<Package size={20} strokeWidth={1.5} />),
+  },
+  {
     id: 'asset-assignment',
     title: 'Asset Assignment / Return',
     description: 'Reassign a tracked asset between custodians, or mark as returned, retired, or disposed.',
-    domain: 'Admin & Asset',
-    approver: 'Admin Owner',
+    domain: 'Inventory & Asset',
+    approver: 'Inventory Owner',
     sla: '1 business day',
     evidence: ['Asset ID', 'New custodian'],
+    ctaRoute: '/asset-custody',
     icon: i(<UserPlus size={20} strokeWidth={1.5} />),
   },
+  {
+    id: 'licence-request',
+    title: 'Software Licence Request',
+    description: 'Request a seat on an existing software licence pool (Adobe, Office 365, Postman, etc.).',
+    domain: 'Inventory & Asset',
+    approver: 'Inventory Owner + Platform Admin',
+    sla: '2 business days',
+    evidence: ['Licence type', 'Business justification'],
+    ctaRoute: '/inventory-register',
+    icon: i(<Key size={20} strokeWidth={1.5} />),
+  },
+
+  // ── Admin & Back-Office ────────────────────────────────────────────────────
   {
     id: 'travel-admin',
     title: 'Travel / Admin Request',
     description: 'Raise a travel, visa, or admin support request — captures cost estimate, per-diem, and approval route.',
-    domain: 'Admin & Asset',
-    approver: 'Finance Control Owner',
+    domain: 'Admin & Back-Office',
+    approver: 'Admin Owner + Finance Control Owner',
     sla: '5 business days',
     evidence: ['Travel details', 'Cost estimate', 'Per-diem breakdown'],
+    ctaRoute: '/travel-admin',
     icon: i(<Plane size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'office-supplies',
+    title: 'Office Supplies Request',
+    description: 'Request office supplies, stationery, or consumables for a DQ entity or location.',
+    domain: 'Admin & Back-Office',
+    approver: 'Admin Owner',
+    sla: '2 business days',
+    evidence: ['Items list', 'Justification'],
+    ctaRoute: '/office-services',
+    icon: i(<Package size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'document-support',
+    title: 'Document Support',
+    description: 'Notarisation, attestation, document scanning, or formal document preparation.',
+    domain: 'Admin & Back-Office',
+    approver: 'Admin Owner',
+    sla: '4 business days',
+    evidence: ['Document', 'Purpose'],
+    ctaRoute: '/office-services',
+    icon: i(<FileText size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'facilities-request',
+    title: 'Facilities Request',
+    description: 'Office maintenance, AC service, meeting-room setup, or facilities issue.',
+    domain: 'Admin & Back-Office',
+    approver: 'Admin Owner',
+    sla: '2 business days',
+    evidence: ['Issue description', 'Location'],
+    ctaRoute: '/office-services',
+    icon: i(<Wrench size={20} strokeWidth={1.5} />),
+  },
+  {
+    id: 'business-card',
+    title: 'Business Card / Letterhead',
+    description: 'Order business cards or branded letterhead for a DQ employee or entity.',
+    domain: 'Admin & Back-Office',
+    approver: 'Admin Owner',
+    sla: '5 business days',
+    evidence: ['Recipient details', 'Quantity'],
+    ctaRoute: '/office-services',
+    icon: i(<Mail size={20} strokeWidth={1.5} />),
   },
 
   // ── Master Data ────────────────────────────────────────────────────────────
@@ -316,9 +436,11 @@ export const marketplaceItems: MarketplaceItem[] = [
 
 export const domains: RequestDomain[] = [
   'Finance',
+  'HR & People',
   'Procurement',
+  'Inventory & Asset',
+  'Admin & Back-Office',
   'Project & Service',
-  'Admin & Asset',
   'Master Data',
   'Integration',
 ]

@@ -13,6 +13,8 @@ import {
   ChevronLeft, ChevronRight, ChevronDown,
   Flag, HeartPulse, ClipboardCheck,
   Compass, PenTool, Send, Gauge,
+  Calendar, IdCard, BookUser, Database, Plane, Wrench, ScrollText, HardDrive,
+  FileSearch, Package2, GanttChart, BookOpen,
 } from 'lucide-react'
 import { usePersona } from '../context/PersonaContext'
 import type { PersonaRole } from '../types'
@@ -43,7 +45,7 @@ interface NavStageDef {
   groups: NavGroupDef[]
 }
 
-const ALL_INTERNAL: PersonaRole[] = ['EXEC', 'FIN-OWN', 'FIN-OPS', 'REQ', 'ADMIN', 'BC-STEWARD']
+const ALL_INTERNAL: PersonaRole[] = ['EXEC', 'FIN-OWN', 'FIN-OPS', 'REQ', 'ADMIN', 'BC-STEWARD', 'HR-OWN', 'INV-OWN', 'ADM-OWN', 'PROC-OWN']
 
 // ── S00 Orientations ─────────────────────────────────────────────────────────
 const STAGE_S00: NavStageDef = {
@@ -55,7 +57,8 @@ const STAGE_S00: NavStageDef = {
       label: '',
       roles: ALL_INTERNAL,
       items: [
-        { label: 'DWS.04 Home', icon: <Home size={20} strokeWidth={1.5} />, route: '/', roles: ALL_INTERNAL },
+        { label: 'Home (Welcome)', icon: <Home size={20} strokeWidth={1.5} />, route: '/', roles: ALL_INTERNAL },
+        { label: 'Personal Dashboard', icon: <LayoutDashboard size={20} strokeWidth={1.5} />, route: '/personal-dashboard', roles: ALL_INTERNAL },
       ],
     },
   ],
@@ -99,7 +102,7 @@ const STAGE_S02: NavStageDef = {
       ],
     },
     {
-      label: 'Finance Control',
+      label: 'Finance Workspace',
       roles: ALL_INTERNAL,
       items: [
         { label: 'Finance Workspace', icon: <BarChart2 size={20} strokeWidth={1.5} />, route: '/finance-control', roles: ['EXEC', 'FIN-OWN', 'FIN-OPS'] },
@@ -113,20 +116,55 @@ const STAGE_S02: NavStageDef = {
       ],
     },
     {
-      label: 'Procurement & Vendor Operations',
-      roles: ['FIN-OWN', 'ADMIN'],
+      label: 'HR Workspace',
+      roles: ['EXEC', 'HR-OWN', 'ADM-OWN', 'FIN-OWN', 'REQ', 'ADMIN'],
       items: [
-        { label: 'Procurement Workspace', icon: <ShoppingCart size={20} strokeWidth={1.5} />, route: '/procurement', roles: ['ADMIN'] },
-        { label: 'Purchase Request Centre', icon: <PlusSquare size={20} strokeWidth={1.5} />, route: '/purchase-requests', roles: ['ADMIN'] },
-        { label: 'Vendor Directory', icon: <Users size={20} strokeWidth={1.5} />, route: '/vendor-directory', roles: ['FIN-OWN', 'FIN-OPS', 'ADMIN', 'BC-STEWARD'] },
-        { label: 'Vendor Onboarding', icon: <UserPlus size={20} strokeWidth={1.5} />, route: '/vendor-onboarding', roles: ['FIN-OWN', 'FIN-OPS', 'ADMIN', 'BC-STEWARD'] },
-        { label: 'Quote & PO Tracker', icon: <GitPullRequest size={20} strokeWidth={1.5} />, route: '/quote-po', roles: ['FIN-OWN', 'ADMIN'] },
-        { label: 'Subscription & Renewals', icon: <RefreshCw size={20} strokeWidth={1.5} />, route: '/subscriptions', roles: ['FIN-OWN', 'ADMIN'] },
-        { label: 'Asset Register', icon: <Package size={20} strokeWidth={1.5} />, route: '/assets', roles: ['ADMIN'] },
+        { label: 'HR Home', icon: <BookUser size={20} strokeWidth={1.5} />, route: '/hr-home', roles: ['EXEC', 'HR-OWN'] },
+        { label: 'Employee Register', icon: <IdCard size={20} strokeWidth={1.5} />, route: '/employee-register', roles: ['EXEC', 'HR-OWN', 'FIN-OWN', 'ADM-OWN', 'ADMIN'] },
+        { label: 'HR Service Requests', icon: <ScrollText size={20} strokeWidth={1.5} />, route: '/hr-requests', roles: ALL_INTERNAL },
+        { label: 'Leave Management', icon: <Calendar size={20} strokeWidth={1.5} />, route: '/leave-management', roles: ALL_INTERNAL },
+        { label: 'Onboarding / Offboarding', icon: <UserPlus size={20} strokeWidth={1.5} />, route: '/onboarding-offboarding', roles: ['EXEC', 'HR-OWN', 'ADM-OWN', 'INV-OWN', 'ADMIN'] },
+        { label: 'HR Operations Console', icon: <BarChart2 size={20} strokeWidth={1.5} />, route: '/hr-ops', roles: ['HR-OWN', 'ADMIN'] },
       ],
     },
     {
-      label: 'Project & Service Economics',
+      label: 'Procurement Workspace',
+      roles: ['FIN-OWN', 'PROC-OWN', 'ADMIN', 'INV-OWN'],
+      items: [
+        { label: 'Procurement Workspace', icon: <ShoppingCart size={20} strokeWidth={1.5} />, route: '/procurement', roles: ['PROC-OWN', 'ADMIN'] },
+        { label: 'Purchase Request Centre', icon: <PlusSquare size={20} strokeWidth={1.5} />, route: '/purchase-requests', roles: ['PROC-OWN', 'ADMIN'] },
+        { label: 'Vendor Directory', icon: <Users size={20} strokeWidth={1.5} />, route: '/vendor-directory', roles: ['FIN-OWN', 'FIN-OPS', 'PROC-OWN', 'ADMIN', 'BC-STEWARD'] },
+        { label: 'Vendor Onboarding', icon: <UserPlus size={20} strokeWidth={1.5} />, route: '/vendor-onboarding', roles: ['FIN-OWN', 'FIN-OPS', 'PROC-OWN', 'ADMIN', 'BC-STEWARD'] },
+        { label: 'Quote & PO Tracker', icon: <GitPullRequest size={20} strokeWidth={1.5} />, route: '/quote-po', roles: ['FIN-OWN', 'PROC-OWN', 'ADMIN'] },
+        { label: 'Subscription & Renewals', icon: <RefreshCw size={20} strokeWidth={1.5} />, route: '/subscriptions', roles: ['FIN-OWN', 'PROC-OWN', 'ADMIN'] },
+      ],
+    },
+    {
+      label: 'Inventory & Assets Workspace',
+      roles: ['INV-OWN', 'HR-OWN', 'ADM-OWN', 'PROC-OWN', 'ADMIN', 'EXEC', 'FIN-OWN'],
+      items: [
+        { label: 'Inventory Home', icon: <Database size={20} strokeWidth={1.5} />, route: '/inventory-home', roles: ['INV-OWN', 'EXEC'] },
+        { label: 'Inventory / Stock Register', icon: <Package size={20} strokeWidth={1.5} />, route: '/inventory-register', roles: ['INV-OWN', 'ADM-OWN', 'PROC-OWN', 'ADMIN'] },
+        { label: 'Inventory Requests & Issues', icon: <ClipboardCheck size={20} strokeWidth={1.5} />, route: '/inventory-requests', roles: ['INV-OWN', 'ADM-OWN', 'ADMIN'] },
+        { label: 'Inventory Operations Console', icon: <BarChart2 size={20} strokeWidth={1.5} />, route: '/inventory-ops', roles: ['INV-OWN', 'ADMIN'] },
+        { label: 'Asset Register', icon: <HardDrive size={20} strokeWidth={1.5} />, route: '/assets', roles: ['INV-OWN', 'PROC-OWN', 'HR-OWN', 'ADMIN'] },
+        { label: 'Asset Custody & Return', icon: <UserPlus size={20} strokeWidth={1.5} />, route: '/asset-custody', roles: ['INV-OWN', 'HR-OWN', 'ADMIN'] },
+        { label: 'Asset Lifecycle Pack', icon: <Activity size={20} strokeWidth={1.5} />, route: '/asset-lifecycle', roles: ['INV-OWN', 'FIN-OWN', 'EXEC', 'ADMIN'] },
+        { label: 'Inventory Reconciliation', icon: <Package2 size={20} strokeWidth={1.5} />, route: '/inventory-reconciliation', roles: ['INV-OWN', 'FIN-OWN', 'EXEC', 'ADMIN'] },
+      ],
+    },
+    {
+      label: 'Back-Office Workspace',
+      roles: ['ADM-OWN', 'EXEC', 'HR-OWN', 'REQ', 'ADMIN'],
+      items: [
+        { label: 'Back-Office Home', icon: <Briefcase size={20} strokeWidth={1.5} />, route: '/backoffice-home', roles: ['ADM-OWN', 'EXEC'] },
+        { label: 'Travel & Admin Requests', icon: <Plane size={20} strokeWidth={1.5} />, route: '/travel-admin', roles: ALL_INTERNAL },
+        { label: 'Office Services Tracker', icon: <Wrench size={20} strokeWidth={1.5} />, route: '/office-services', roles: ['ADM-OWN', 'REQ', 'ADMIN'] },
+        { label: 'Back-Office Fulfilment Console', icon: <Inbox size={20} strokeWidth={1.5} />, route: '/backoffice-fulfilment', roles: ['ADM-OWN', 'ADMIN'] },
+      ],
+    },
+    {
+      label: 'Project & Service Workspace',
       roles: ALL_INTERNAL,
       items: [
         { label: 'Project Milestone Tracker', icon: <Flag size={20} strokeWidth={1.5} />, route: '/milestone-tracker', roles: ALL_INTERNAL },
@@ -137,19 +175,21 @@ const STAGE_S02: NavStageDef = {
       ],
     },
     {
-      label: 'Request & Approval Governance',
+      label: 'Approvals & Controls Workspace',
       roles: ALL_INTERNAL,
       items: [
         { label: 'Universal Request Intake', icon: <PlusCircle size={20} strokeWidth={1.5} />, route: '/request-intake', roles: ALL_INTERNAL },
         { label: 'Request Tracker', icon: <ListOrdered size={20} strokeWidth={1.5} />, route: '/request-tracker', roles: ALL_INTERNAL },
-        { label: 'Approval Console', icon: <Inbox size={20} strokeWidth={1.5} />, route: '/approval-console', roles: ['EXEC', 'FIN-OWN'] },
+        { label: 'Approval Console', icon: <Inbox size={20} strokeWidth={1.5} />, route: '/approval-console', roles: ['EXEC', 'FIN-OWN', 'HR-OWN', 'PROC-OWN', 'INV-OWN', 'ADM-OWN'] },
+        { label: 'Approval Governance Console', icon: <GanttChart size={20} strokeWidth={1.5} />, route: '/approval-governance', roles: ['EXEC', 'FIN-OWN', 'HR-OWN', 'PROC-OWN', 'INV-OWN', 'ADM-OWN', 'ADMIN'] },
         { label: 'Approval Rules & Thresholds', icon: <Sliders size={20} strokeWidth={1.5} />, route: '/approval-rules', roles: ['ADMIN', 'FIN-OWN'] },
-        { label: 'Escalations & Exceptions', icon: <AlertTriangle size={20} strokeWidth={1.5} />, route: '/escalations', badge: 6, roles: ['EXEC', 'FIN-OWN', 'ADMIN'] },
+        { label: 'Escalations & Exceptions', icon: <AlertTriangle size={20} strokeWidth={1.5} />, route: '/escalations', badge: 6, roles: ['EXEC', 'FIN-OWN', 'HR-OWN', 'PROC-OWN', 'INV-OWN', 'ADM-OWN', 'ADMIN'] },
         { label: 'Audit Trail Explorer', icon: <Search size={20} strokeWidth={1.5} />, route: '/audit-trail', roles: ['EXEC', 'FIN-OWN', 'ADMIN'] },
+        { label: 'Audit Pack Builder', icon: <FileSearch size={20} strokeWidth={1.5} />, route: '/audit-pack-builder', roles: ['EXEC', 'FIN-OWN', 'HR-OWN', 'INV-OWN', 'ADMIN'] },
       ],
     },
     {
-      label: 'Master Data & Structure',
+      label: 'Master Data Workspace',
       roles: ALL_INTERNAL,
       items: [
         { label: 'Entity & Location Structure', icon: <Globe size={20} strokeWidth={1.5} />, route: '/entity-structure', roles: ['ADMIN', 'BC-STEWARD', 'FIN-OWN'] },
@@ -162,20 +202,23 @@ const STAGE_S02: NavStageDef = {
       ],
     },
     {
-      label: 'Intelligence',
-      roles: ['EXEC', 'FIN-OWN', 'FIN-OPS', 'ADMIN'],
+      label: 'Intelligence Workspace',
+      roles: ['EXEC', 'FIN-OWN', 'FIN-OPS', 'HR-OWN', 'PROC-OWN', 'INV-OWN', 'ADM-OWN', 'ADMIN'],
       items: [
         { label: 'Executive Overview', icon: <Cpu size={20} strokeWidth={1.5} />, route: '/executive-home', roles: ['EXEC', 'FIN-OWN', 'ADMIN'] },
         { label: 'Financial Health Report', icon: <HeartPulse size={20} strokeWidth={1.5} />, route: '/financial-health', roles: ['EXEC', 'FIN-OWN', 'FIN-OPS', 'ADMIN'] },
+        { label: 'Operational SLA Dashboard', icon: <Activity size={20} strokeWidth={1.5} />, route: '/sla-dashboard', roles: ['EXEC', 'FIN-OWN', 'HR-OWN', 'PROC-OWN', 'INV-OWN', 'ADM-OWN', 'ADMIN'] },
+        { label: 'Workforce Cost Analytics', icon: <BookUser size={20} strokeWidth={1.5} />, route: '/workforce-cost', roles: ['EXEC', 'HR-OWN', 'FIN-OWN', 'ADMIN'] },
+        { label: 'Back-Office Performance', icon: <Briefcase size={20} strokeWidth={1.5} />, route: '/backoffice-performance', roles: ['EXEC', 'ADM-OWN', 'ADMIN'] },
         { label: 'Finance Insights', icon: <TrendingUp size={20} strokeWidth={1.5} />, route: '/finance-insights', roles: ['EXEC', 'FIN-OWN', 'FIN-OPS'] },
-        { label: 'Procurement Insights', icon: <ShoppingBag size={20} strokeWidth={1.5} />, route: '/procurement-insights', roles: ['EXEC', 'ADMIN'] },
+        { label: 'Procurement Insights', icon: <ShoppingBag size={20} strokeWidth={1.5} />, route: '/procurement-insights', roles: ['EXEC', 'PROC-OWN', 'ADMIN'] },
         { label: 'Project / Service Insights', icon: <BarChart size={20} strokeWidth={1.5} />, route: '/project-insights', roles: ['EXEC', 'FIN-OWN', 'ADMIN'] },
-        { label: 'AI Briefs & Recommendations', icon: <Zap size={20} strokeWidth={1.5} />, route: '/ai-briefs', roles: ['EXEC', 'FIN-OWN', 'ADMIN'] },
-        { label: 'Risk / Exception Alerts', icon: <AlertCircle size={20} strokeWidth={1.5} />, route: '/risk-alerts', roles: ['EXEC', 'FIN-OWN', 'ADMIN'] },
+        { label: 'AI Briefs & Recommendations', icon: <Zap size={20} strokeWidth={1.5} />, route: '/ai-briefs', roles: ['EXEC', 'FIN-OWN', 'HR-OWN', 'PROC-OWN', 'INV-OWN', 'ADM-OWN', 'ADMIN'] },
+        { label: 'Risk / Exception Alerts', icon: <AlertCircle size={20} strokeWidth={1.5} />, route: '/risk-alerts', roles: ['EXEC', 'FIN-OWN', 'HR-OWN', 'ADMIN'] },
       ],
     },
     {
-      label: 'Platform Administration',
+      label: 'Platform Workspace',
       roles: ['ADMIN', 'BC-STEWARD'],
       items: [
         { label: 'Platform Admin Console', icon: <Settings size={20} strokeWidth={1.5} />, route: '/admin-console', roles: ['ADMIN', 'BC-STEWARD'] },
