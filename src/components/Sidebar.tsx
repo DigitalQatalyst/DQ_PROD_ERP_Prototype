@@ -47,10 +47,10 @@ interface NavStageDef {
 
 const ALL_INTERNAL: PersonaRole[] = ['EXEC', 'FIN-OWN', 'FIN-OPS', 'REQ', 'ADMIN', 'BC-STEWARD', 'HR-OWN', 'INV-OWN', 'ADM-OWN', 'PROC-OWN']
 
-// ── S00 Orientations ─────────────────────────────────────────────────────────
+// ── S00 Orientation ──────────────────────────────────────────────────────────
 const STAGE_S00: NavStageDef = {
   code: 'S00',
-  label: 'Orientations',
+  label: 'Orientation',
   roles: ALL_INTERNAL,
   groups: [
     {
@@ -103,7 +103,7 @@ const STAGE_S02: NavStageDef = {
     },
     {
       label: 'Finance Workspace',
-      roles: ALL_INTERNAL,
+      roles: ['EXEC', 'FIN-OWN', 'FIN-OPS', 'PROC-OWN'],
       items: [
         { label: 'Finance Workspace', icon: <BarChart2 size={20} strokeWidth={1.5} />, route: '/finance-control', roles: ['EXEC', 'FIN-OWN', 'FIN-OPS'] },
         { label: 'Expense & Reimbursement', icon: <Receipt size={20} strokeWidth={1.5} />, route: '/expense-reimbursement', roles: ['EXEC', 'FIN-OWN', 'FIN-OPS', 'REQ'] },
@@ -117,7 +117,7 @@ const STAGE_S02: NavStageDef = {
     },
     {
       label: 'HR Workspace',
-      roles: ['EXEC', 'HR-OWN', 'ADM-OWN', 'FIN-OWN', 'REQ', 'ADMIN'],
+      roles: ['EXEC', 'HR-OWN', 'ADM-OWN'],
       items: [
         { label: 'HR Home', icon: <BookUser size={20} strokeWidth={1.5} />, route: '/hr-home', roles: ['EXEC', 'HR-OWN'] },
         { label: 'Employee Register', icon: <IdCard size={20} strokeWidth={1.5} />, route: '/employee-register', roles: ['EXEC', 'HR-OWN', 'FIN-OWN', 'ADM-OWN', 'ADMIN'] },
@@ -129,7 +129,7 @@ const STAGE_S02: NavStageDef = {
     },
     {
       label: 'Procurement Workspace',
-      roles: ['FIN-OWN', 'PROC-OWN', 'ADMIN', 'INV-OWN'],
+      roles: ['EXEC', 'FIN-OWN', 'PROC-OWN', 'INV-OWN'],
       items: [
         { label: 'Procurement Workspace', icon: <ShoppingCart size={20} strokeWidth={1.5} />, route: '/procurement', roles: ['PROC-OWN', 'ADMIN'] },
         { label: 'Purchase Request Centre', icon: <PlusSquare size={20} strokeWidth={1.5} />, route: '/purchase-requests', roles: ['PROC-OWN', 'ADMIN'] },
@@ -140,8 +140,8 @@ const STAGE_S02: NavStageDef = {
       ],
     },
     {
-      label: 'Inventory & Assets Workspace',
-      roles: ['INV-OWN', 'HR-OWN', 'ADM-OWN', 'PROC-OWN', 'ADMIN', 'EXEC', 'FIN-OWN'],
+      label: 'Inventory Workspace',
+      roles: ['EXEC', 'FIN-OWN', 'INV-OWN', 'HR-OWN', 'ADM-OWN', 'PROC-OWN'],
       items: [
         { label: 'Inventory Home', icon: <Database size={20} strokeWidth={1.5} />, route: '/inventory-home', roles: ['INV-OWN', 'EXEC'] },
         { label: 'Inventory / Stock Register', icon: <Package size={20} strokeWidth={1.5} />, route: '/inventory-register', roles: ['INV-OWN', 'ADM-OWN', 'PROC-OWN', 'ADMIN'] },
@@ -155,7 +155,7 @@ const STAGE_S02: NavStageDef = {
     },
     {
       label: 'Back-Office Workspace',
-      roles: ['ADM-OWN', 'EXEC', 'HR-OWN', 'REQ', 'ADMIN'],
+      roles: ['EXEC', 'ADM-OWN', 'HR-OWN'],
       items: [
         { label: 'Back-Office Home', icon: <Briefcase size={20} strokeWidth={1.5} />, route: '/backoffice-home', roles: ['ADM-OWN', 'EXEC'] },
         { label: 'Travel & Admin Requests', icon: <Plane size={20} strokeWidth={1.5} />, route: '/travel-admin', roles: ALL_INTERNAL },
@@ -164,8 +164,8 @@ const STAGE_S02: NavStageDef = {
       ],
     },
     {
-      label: 'Project & Service Workspace',
-      roles: ALL_INTERNAL,
+      label: 'Project Workspace',
+      roles: ['EXEC', 'FIN-OWN', 'FIN-OPS'],
       items: [
         { label: 'Project Milestone Tracker', icon: <Flag size={20} strokeWidth={1.5} />, route: '/milestone-tracker', roles: ALL_INTERNAL },
         { label: 'Project / Service Register', icon: <FolderOpen size={20} strokeWidth={1.5} />, route: '/project-register', roles: ['EXEC', 'FIN-OWN'] },
@@ -175,7 +175,7 @@ const STAGE_S02: NavStageDef = {
       ],
     },
     {
-      label: 'Approvals & Controls Workspace',
+      label: 'Approvals Workspace',
       roles: ALL_INTERNAL,
       items: [
         { label: 'Universal Request Intake', icon: <PlusCircle size={20} strokeWidth={1.5} />, route: '/request-intake', roles: ALL_INTERNAL },
@@ -190,7 +190,7 @@ const STAGE_S02: NavStageDef = {
     },
     {
       label: 'Master Data Workspace',
-      roles: ALL_INTERNAL,
+      roles: ['EXEC', 'FIN-OWN', 'FIN-OPS', 'ADMIN', 'BC-STEWARD', 'HR-OWN', 'INV-OWN', 'PROC-OWN'],
       items: [
         { label: 'Entity & Location Structure', icon: <Globe size={20} strokeWidth={1.5} />, route: '/entity-structure', roles: ['ADMIN', 'BC-STEWARD', 'FIN-OWN'] },
         { label: 'Users, Roles & Delegations', icon: <UserCog size={20} strokeWidth={1.5} />, route: '/users-roles', roles: ['ADMIN', 'BC-STEWARD'] },
@@ -311,15 +311,15 @@ export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
                   aria-expanded={!isStageCollapsed}
                   className="w-full px-4 py-2 flex items-center justify-between gap-2 hover:bg-border-subtle transition-colors group"
                 >
-                  <span className="flex items-baseline gap-2">
+                  <span className="flex items-baseline gap-2 min-w-0">
                     <span
-                      className="text-[10px] font-bold text-dq-orange"
+                      className="text-[10px] font-bold text-dq-orange shrink-0"
                       style={{ letterSpacing: '0.08em' }}
                     >
                       {stage.code}
                     </span>
                     <span
-                      className="text-[12px] font-bold uppercase text-dq-navy"
+                      className="text-[12px] font-bold uppercase text-dq-navy truncate"
                       style={{ letterSpacing: '0.14em' }}
                     >
                       {stage.label}
@@ -345,10 +345,10 @@ export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
                     <button
                       onClick={() => toggleGroup(groupKey)}
                       aria-expanded={!isGroupCollapsed}
-                      className="w-full px-4 py-1 flex items-center justify-between gap-2 hover:bg-border-subtle transition-colors"
+                      className="w-full px-4 py-1 flex items-center justify-between gap-2 hover:bg-border-subtle transition-colors min-w-0"
                     >
                       <span
-                        className="text-[10px] font-semibold uppercase tracking-widest text-text-muted"
+                        className="text-[10px] font-semibold uppercase tracking-widest text-text-muted truncate"
                         style={{ letterSpacing: '0.12em' }}
                       >
                         {group.label}

@@ -133,6 +133,7 @@ import DesignEvidenceLibrary from './pages/marketplace/DesignEvidenceLibrary'
 import DesignWorkflowBlueprints from './pages/marketplace/DesignWorkflowBlueprints'
 import DeployMarketplace from './pages/marketplace/DeployMarketplace'
 import DriveMarketplace from './pages/marketplace/DriveMarketplace'
+import MarketplaceJourney from './pages/marketplace/MarketplaceJourney'
 
 // Placeholder for unmatched routes only
 import PlaceholderPage from './components/PlaceholderPage'
@@ -176,6 +177,7 @@ export default function App() {
               <Route path="/marketplace/design/workflows" element={<DesignWorkflowBlueprints />} />
               <Route path="/marketplace/deploy" element={<DeployMarketplace />} />
               <Route path="/marketplace/drive" element={<DriveMarketplace />} />
+              <Route path="/marketplace/journey/:itemId" element={<MarketplaceJourney />} />
 
               {/* S01 legacy routes — still resolve for deep-links, not in sidebar */}
               <Route path="/marketplace/finance" element={<FinanceServicesCatalogue />} />

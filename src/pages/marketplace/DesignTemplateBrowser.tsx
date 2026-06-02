@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
-import { Search } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { Search, ArrowRight } from 'lucide-react'
 import { marketplaceItems, domains, type RequestDomain } from '../../data/marketplaceItems'
 
 type Filter = 'All' | RequestDomain
@@ -73,9 +74,17 @@ export default function DesignTemplateBrowser() {
               {item.icon}
             </div>
             <div className="flex-1 min-w-0">
-              <div className="flex items-baseline gap-2 mb-1">
-                <h3 className="text-sm font-semibold text-text-primary">{item.title}</h3>
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-text-muted">{item.domain}</span>
+              <div className="flex items-baseline justify-between gap-2 mb-1">
+                <div className="flex items-baseline gap-2">
+                  <h3 className="text-sm font-semibold text-text-primary">{item.title}</h3>
+                  <span className="text-[10px] font-semibold uppercase tracking-wider text-text-muted">{item.domain}</span>
+                </div>
+                <Link
+                  to={`/marketplace/journey/${item.id}`}
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-dq-orange hover:underline shrink-0"
+                >
+                  View 4D journey <ArrowRight size={11} strokeWidth={2} />
+                </Link>
               </div>
               <p className="text-xs text-text-muted mb-3 leading-relaxed">{item.description}</p>
               <div className="grid grid-cols-3 gap-4 text-[11px]">

@@ -109,13 +109,20 @@ export default function DeployMarketplace() {
                 </div>
               </div>
 
-              <Link
-                to={item.ctaRoute ?? '/request-intake'}
-                className="mt-3 inline-flex items-center justify-center gap-1.5 py-2 rounded-btn bg-dq-orange text-white text-xs font-semibold hover:opacity-90 transition-opacity"
-              >
-                Start request
-                <ArrowRight size={12} strokeWidth={2} />
-              </Link>
+              <div className="mt-3 grid grid-cols-2 gap-2">
+                <Link
+                  to={`/marketplace/journey/${item.id}`}
+                  className="inline-flex items-center justify-center gap-1 py-2 rounded-btn border border-border-default text-text-primary text-xs font-semibold hover:bg-surface-1 transition-colors"
+                >
+                  View 4D journey
+                </Link>
+                <Link
+                  to={item.ctaRoute ?? '/request-intake'}
+                  className="inline-flex items-center justify-center gap-1.5 py-2 rounded-btn bg-dq-orange text-white text-xs font-semibold hover:opacity-90 transition-opacity"
+                >
+                  Start <ArrowRight size={12} strokeWidth={2} />
+                </Link>
+              </div>
             </div>
           ))}
         </div>
