@@ -135,6 +135,99 @@ import DeployMarketplace from './pages/marketplace/DeployMarketplace'
 import DriveMarketplace from './pages/marketplace/DriveMarketplace'
 import MarketplaceJourney from './pages/marketplace/MarketplaceJourney'
 
+
+// AI Cockpit
+import AICockpit from './pages/AICockpit'
+
+// Finance Workspace
+import FinanceWorkQueue from './pages/finance/FinanceWorkQueue'
+import PaymentProcessing from './pages/finance/PaymentProcessing'
+import InvoiceReview from './pages/finance/InvoiceReview'
+import BudgetReview from './pages/finance/BudgetReview'
+import FinanceRequestTracker from './pages/finance/FinanceRequestTracker'
+
+// HR Workspace
+import HRWorkQueue from './pages/hr/HRWorkQueue'
+import OnboardingOperations from './pages/hr/OnboardingOperations'
+import EmployeeChangeOperations from './pages/hr/EmployeeChangeOperations'
+import PeopleServiceTracker from './pages/hr/PeopleServiceTracker'
+import HRApprovalReadiness from './pages/hr/HRApprovalReadiness'
+
+// Procurement Workspace
+import ProcurementWorkQueue from './pages/procurement/ProcurementWorkQueue'
+import VendorReview from './pages/procurement/VendorReview'
+import PurchaseRequestReview from './pages/procurement/PurchaseRequestReview'
+import QuotationReview from './pages/procurement/QuotationReview'
+import POReadinessTracker from './pages/procurement/POReadinessTracker'
+
+// Inventory Workspace
+import InventoryWorkQueue from './pages/inventory-workspace/InventoryWorkQueue'
+import MovementTracker from './pages/inventory-workspace/MovementTracker'
+import AssetAssignmentTracker from './pages/inventory-workspace/AssetAssignmentTracker'
+import AssetReturnReplacement from './pages/inventory-workspace/AssetReturnReplacement'
+import StockExceptionReview from './pages/inventory-workspace/StockExceptionReview'
+
+// Project Workspace
+import ProjectEconomicsQueue from './pages/project/ProjectEconomicsQueue'
+import CostBillingReadinessTracker from './pages/project/CostBillingReadinessTracker'
+import MasterDataReviewQueue from './pages/project/MasterDataReviewQueue'
+import DimensionEntityChangeReview from './pages/project/DimensionEntityChangeReview'
+import ERPRecordReadinessTracker from './pages/project/ERPRecordReadinessTracker'
+
+// Service Operations
+import FulfilmentConsole from './pages/service-ops/FulfilmentConsole'
+import AssignmentQueue from './pages/service-ops/AssignmentQueue'
+import ServiceOwnerView from './pages/service-ops/ServiceOwnerView'
+import ReturnedItems from './pages/service-ops/ReturnedItems'
+import ClosureHandover from './pages/service-ops/ClosureHandover'
+import ServiceApprovalQueue from './pages/service-ops/ApprovalQueue'
+import ServiceApprovalTracker from './pages/service-ops/ApprovalTracker'
+import ControlChecks from './pages/service-ops/ControlChecks'
+import PolicyExceptionReview from './pages/service-ops/PolicyExceptionReview'
+import DecisionHistory from './pages/service-ops/DecisionHistory'
+import ServiceSLADashboard from './pages/service-ops/SLADashboard'
+import OverdueItems from './pages/service-ops/OverdueItems'
+import ServiceEscalationQueue from './pages/service-ops/EscalationQueue'
+import BlockedRequests from './pages/service-ops/BlockedRequests'
+import RejectedDisputedItems from './pages/service-ops/RejectedDisputedItems'
+import SyncMonitor from './pages/service-ops/SyncMonitor'
+import FailedSyncs from './pages/service-ops/FailedSyncs'
+import PendingSyncs from './pages/service-ops/PendingSyncs'
+import ReconciliationQueue from './pages/service-ops/ReconciliationQueue'
+import ERPReferenceMapping from './pages/service-ops/ERPReferenceMapping'
+import ERPOperationsDashboard from './pages/service-ops/ERPOperationsDashboard'
+import ServicePerformanceDashboard from './pages/service-ops/ServicePerformanceDashboard'
+import ApprovalBottleneckInsights from './pages/service-ops/ApprovalBottleneckInsights'
+import EvidenceRepository from './pages/service-ops/EvidenceRepository'
+import ServiceAuditTrail from './pages/service-ops/AuditTrail'
+
+// Platform Management
+import ServiceCategories from './pages/platform/ServiceCategories'
+import ServiceForms from './pages/platform/ServiceForms'
+import RequiredEvidenceSetup from './pages/platform/RequiredEvidenceSetup'
+import SLASetup from './pages/platform/SLASetup'
+import CatalogueVisibilityRules from './pages/platform/CatalogueVisibilityRules'
+import PlatformWorkflowBuilder from './pages/platform/WorkflowBuilder'
+import PlatformApprovalRules from './pages/platform/ApprovalRules'
+import PlatformApprovalThresholds from './pages/platform/ApprovalThresholds'
+import PlatformEscalationRules from './pages/platform/EscalationRules'
+import PlatformRoutingRules from './pages/platform/RoutingRules'
+import UserManagement from './pages/platform/UserManagement'
+import RoleManagement from './pages/platform/RoleManagement'
+import PermissionGroups from './pages/platform/PermissionGroups'
+import WorkspaceAccessRules from './pages/platform/WorkspaceAccessRules'
+import DelegationProxyRules from './pages/platform/DelegationProxyRules'
+import BCIntegrationSettings from './pages/platform/BCIntegrationSettings'
+import DataMappingRules from './pages/platform/DataMappingRules'
+import PlatformSyncRules from './pages/platform/SyncRules'
+import MasterDataGovernance from './pages/platform/MasterDataGovernance'
+import EntityDimensionGovernance from './pages/platform/EntityDimensionGovernance'
+import PlatformAccessControl from './pages/platform/AccessControl'
+import PlatformAuditPermissions from './pages/platform/AuditPermissions'
+import PlatformChangeLog from './pages/platform/PlatformChangeLog'
+import ConfigurationAuditTrail from './pages/platform/ConfigurationAuditTrail'
+import PlatformHealth from './pages/platform/PlatformHealth'
+
 // Placeholder for unmatched routes only
 import PlaceholderPage from './components/PlaceholderPage'
 
@@ -287,112 +380,112 @@ export default function App() {
               <Route path="/release-control" element={<ReleaseEnvironmentControl />} />
 
               {/* ORIENTATION */}
-              <Route path="/ai-cockpit" element={<PlaceholderPage title="AI Cockpit" />} />
+              <Route path="/ai-cockpit" element={<AICockpit />} />
 
               {/* WORKSPACES — Finance */}
-              <Route path="/finance/work-queue" element={<PlaceholderPage title="Finance Work Queue" />} />
-              <Route path="/finance/payment-processing" element={<PlaceholderPage title="Payment Processing" />} />
-              <Route path="/finance/invoice-review" element={<PlaceholderPage title="Invoice Review" />} />
-              <Route path="/finance/budget-review" element={<PlaceholderPage title="Budget Review" />} />
-              <Route path="/finance/request-tracker" element={<PlaceholderPage title="Finance Request Tracker" />} />
+              <Route path="/finance/work-queue" element={<FinanceWorkQueue />} />
+              <Route path="/finance/payment-processing" element={<PaymentProcessing />} />
+              <Route path="/finance/invoice-review" element={<InvoiceReview />} />
+              <Route path="/finance/budget-review" element={<BudgetReview />} />
+              <Route path="/finance/request-tracker" element={<FinanceRequestTracker />} />
 
               {/* WORKSPACES — HR & People */}
-              <Route path="/hr/work-queue" element={<PlaceholderPage title="HR Work Queue" />} />
-              <Route path="/hr/onboarding-operations" element={<PlaceholderPage title="Onboarding Operations" />} />
-              <Route path="/hr/employee-change-operations" element={<PlaceholderPage title="Employee Change Operations" />} />
-              <Route path="/hr/people-service-tracker" element={<PlaceholderPage title="People Service Tracker" />} />
-              <Route path="/hr/approval-readiness" element={<PlaceholderPage title="HR Approval Readiness" />} />
+              <Route path="/hr/work-queue" element={<HRWorkQueue />} />
+              <Route path="/hr/onboarding-operations" element={<OnboardingOperations />} />
+              <Route path="/hr/employee-change-operations" element={<EmployeeChangeOperations />} />
+              <Route path="/hr/people-service-tracker" element={<PeopleServiceTracker />} />
+              <Route path="/hr/approval-readiness" element={<HRApprovalReadiness />} />
 
               {/* WORKSPACES — Procurement & Vendor */}
-              <Route path="/procurement/work-queue" element={<PlaceholderPage title="Procurement Work Queue" />} />
-              <Route path="/procurement/vendor-review" element={<PlaceholderPage title="Vendor Review" />} />
-              <Route path="/procurement/purchase-request-review" element={<PlaceholderPage title="Purchase Request Review" />} />
-              <Route path="/procurement/quotation-review" element={<PlaceholderPage title="Quotation Review" />} />
-              <Route path="/procurement/po-readiness-tracker" element={<PlaceholderPage title="PO Readiness Tracker" />} />
+              <Route path="/procurement/work-queue" element={<ProcurementWorkQueue />} />
+              <Route path="/procurement/vendor-review" element={<VendorReview />} />
+              <Route path="/procurement/purchase-request-review" element={<PurchaseRequestReview />} />
+              <Route path="/procurement/quotation-review" element={<QuotationReview />} />
+              <Route path="/procurement/po-readiness-tracker" element={<POReadinessTracker />} />
 
               {/* WORKSPACES — Inventory & Asset */}
-              <Route path="/inventory/work-queue" element={<PlaceholderPage title="Asset Work Queue" />} />
-              <Route path="/inventory/movement-tracker" element={<PlaceholderPage title="Inventory Movement Tracker" />} />
-              <Route path="/inventory/asset-assignment-tracker" element={<PlaceholderPage title="Asset Assignment Tracker" />} />
-              <Route path="/inventory/asset-return-replacement" element={<PlaceholderPage title="Asset Return / Replacement" />} />
-              <Route path="/inventory/stock-exception-review" element={<PlaceholderPage title="Stock Exception Review" />} />
+              <Route path="/inventory/work-queue" element={<InventoryWorkQueue />} />
+              <Route path="/inventory/movement-tracker" element={<MovementTracker />} />
+              <Route path="/inventory/asset-assignment-tracker" element={<AssetAssignmentTracker />} />
+              <Route path="/inventory/asset-return-replacement" element={<AssetReturnReplacement />} />
+              <Route path="/inventory/stock-exception-review" element={<StockExceptionReview />} />
 
               {/* WORKSPACES — Project Economics & Master Data */}
-              <Route path="/project/economics-queue" element={<PlaceholderPage title="Project Economics Queue" />} />
-              <Route path="/project/cost-billing-readiness" element={<PlaceholderPage title="Cost / Billing Readiness Tracker" />} />
-              <Route path="/project/master-data-review-queue" element={<PlaceholderPage title="Master Data Review Queue" />} />
-              <Route path="/project/dimension-entity-change-review" element={<PlaceholderPage title="Dimension / Entity Change Review" />} />
-              <Route path="/project/erp-record-readiness" element={<PlaceholderPage title="ERP Record Readiness Tracker" />} />
+              <Route path="/project/economics-queue" element={<ProjectEconomicsQueue />} />
+              <Route path="/project/cost-billing-readiness" element={<CostBillingReadinessTracker />} />
+              <Route path="/project/master-data-review-queue" element={<MasterDataReviewQueue />} />
+              <Route path="/project/dimension-entity-change-review" element={<DimensionEntityChangeReview />} />
+              <Route path="/project/erp-record-readiness" element={<ERPRecordReadinessTracker />} />
 
               {/* SERVICE OPERATIONS — Fulfilment Management */}
-              <Route path="/service-ops/fulfilment-console" element={<PlaceholderPage title="Fulfilment Console" />} />
-              <Route path="/service-ops/assignment-queue" element={<PlaceholderPage title="Assignment Queue" />} />
-              <Route path="/service-ops/service-owner-view" element={<PlaceholderPage title="Service Owner View" />} />
-              <Route path="/service-ops/returned-items" element={<PlaceholderPage title="Returned Items" />} />
-              <Route path="/service-ops/closure-handover" element={<PlaceholderPage title="Closure & Handover" />} />
+              <Route path="/service-ops/fulfilment-console" element={<FulfilmentConsole />} />
+              <Route path="/service-ops/assignment-queue" element={<AssignmentQueue />} />
+              <Route path="/service-ops/service-owner-view" element={<ServiceOwnerView />} />
+              <Route path="/service-ops/returned-items" element={<ReturnedItems />} />
+              <Route path="/service-ops/closure-handover" element={<ClosureHandover />} />
 
               {/* SERVICE OPERATIONS — Approval & Control */}
-              <Route path="/service-ops/approval-queue" element={<PlaceholderPage title="Approval Queue" />} />
-              <Route path="/service-ops/approval-tracker" element={<PlaceholderPage title="Approval Tracker" />} />
-              <Route path="/service-ops/control-checks" element={<PlaceholderPage title="Control Checks" />} />
-              <Route path="/service-ops/policy-exception-review" element={<PlaceholderPage title="Policy Exception Review" />} />
-              <Route path="/service-ops/decision-history" element={<PlaceholderPage title="Decision History" />} />
+              <Route path="/service-ops/approval-queue" element={<ServiceApprovalQueue />} />
+              <Route path="/service-ops/approval-tracker" element={<ServiceApprovalTracker />} />
+              <Route path="/service-ops/control-checks" element={<ControlChecks />} />
+              <Route path="/service-ops/policy-exception-review" element={<PolicyExceptionReview />} />
+              <Route path="/service-ops/decision-history" element={<DecisionHistory />} />
 
               {/* SERVICE OPERATIONS — SLA, Escalation & Exceptions */}
-              <Route path="/service-ops/sla-dashboard" element={<PlaceholderPage title="SLA Dashboard" />} />
-              <Route path="/service-ops/overdue-items" element={<PlaceholderPage title="Overdue Items" />} />
-              <Route path="/service-ops/escalation-queue" element={<PlaceholderPage title="Escalation Queue" />} />
-              <Route path="/service-ops/blocked-requests" element={<PlaceholderPage title="Blocked Requests" />} />
-              <Route path="/service-ops/rejected-disputed-items" element={<PlaceholderPage title="Rejected / Disputed Items" />} />
+              <Route path="/service-ops/sla-dashboard" element={<ServiceSLADashboard />} />
+              <Route path="/service-ops/overdue-items" element={<OverdueItems />} />
+              <Route path="/service-ops/escalation-queue" element={<ServiceEscalationQueue />} />
+              <Route path="/service-ops/blocked-requests" element={<BlockedRequests />} />
+              <Route path="/service-ops/rejected-disputed-items" element={<RejectedDisputedItems />} />
 
               {/* SERVICE OPERATIONS — BC Sync */}
-              <Route path="/service-ops/sync-monitor" element={<PlaceholderPage title="Sync Monitor" />} />
-              <Route path="/service-ops/failed-syncs" element={<PlaceholderPage title="Failed Syncs" />} />
-              <Route path="/service-ops/pending-syncs" element={<PlaceholderPage title="Pending Syncs" />} />
-              <Route path="/service-ops/reconciliation-queue" element={<PlaceholderPage title="Reconciliation Queue" />} />
-              <Route path="/service-ops/erp-reference-mapping" element={<PlaceholderPage title="ERP Reference Mapping" />} />
+              <Route path="/service-ops/sync-monitor" element={<SyncMonitor />} />
+              <Route path="/service-ops/failed-syncs" element={<FailedSyncs />} />
+              <Route path="/service-ops/pending-syncs" element={<PendingSyncs />} />
+              <Route path="/service-ops/reconciliation-queue" element={<ReconciliationQueue />} />
+              <Route path="/service-ops/erp-reference-mapping" element={<ERPReferenceMapping />} />
 
               {/* SERVICE OPERATIONS — Intelligence & Audit */}
-              <Route path="/service-ops/erp-operations-dashboard" element={<PlaceholderPage title="ERP Operations Dashboard" />} />
-              <Route path="/service-ops/service-performance-dashboard" element={<PlaceholderPage title="Service Performance Dashboard" />} />
-              <Route path="/service-ops/approval-bottleneck-insights" element={<PlaceholderPage title="Approval Bottleneck Insights" />} />
-              <Route path="/service-ops/evidence-repository" element={<PlaceholderPage title="Evidence Repository" />} />
-              <Route path="/service-ops/audit-trail" element={<PlaceholderPage title="Audit Trail" />} />
+              <Route path="/service-ops/erp-operations-dashboard" element={<ERPOperationsDashboard />} />
+              <Route path="/service-ops/service-performance-dashboard" element={<ServicePerformanceDashboard />} />
+              <Route path="/service-ops/approval-bottleneck-insights" element={<ApprovalBottleneckInsights />} />
+              <Route path="/service-ops/evidence-repository" element={<EvidenceRepository />} />
+              <Route path="/service-ops/audit-trail" element={<ServiceAuditTrail />} />
 
               {/* PLATFORM MANAGEMENT — Service Catalogue */}
-              <Route path="/platform/service-categories" element={<PlaceholderPage title="Service Categories" />} />
-              <Route path="/platform/service-forms" element={<PlaceholderPage title="Service Forms" />} />
-              <Route path="/platform/required-evidence-setup" element={<PlaceholderPage title="Required Evidence Setup" />} />
-              <Route path="/platform/sla-setup" element={<PlaceholderPage title="SLA Setup" />} />
-              <Route path="/platform/catalogue-visibility-rules" element={<PlaceholderPage title="Catalogue Visibility Rules" />} />
+              <Route path="/platform/service-categories" element={<ServiceCategories />} />
+              <Route path="/platform/service-forms" element={<ServiceForms />} />
+              <Route path="/platform/required-evidence-setup" element={<RequiredEvidenceSetup />} />
+              <Route path="/platform/sla-setup" element={<SLASetup />} />
+              <Route path="/platform/catalogue-visibility-rules" element={<CatalogueVisibilityRules />} />
 
               {/* PLATFORM MANAGEMENT — Workflow & Approval Config */}
-              <Route path="/platform/workflow-builder" element={<PlaceholderPage title="Workflow Builder" />} />
-              <Route path="/platform/approval-rules" element={<PlaceholderPage title="Approval Rules" />} />
-              <Route path="/platform/approval-thresholds" element={<PlaceholderPage title="Approval Thresholds" />} />
-              <Route path="/platform/escalation-rules" element={<PlaceholderPage title="Escalation Rules" />} />
-              <Route path="/platform/routing-rules" element={<PlaceholderPage title="Routing Rules" />} />
+              <Route path="/platform/workflow-builder" element={<PlatformWorkflowBuilder />} />
+              <Route path="/platform/approval-rules" element={<PlatformApprovalRules />} />
+              <Route path="/platform/approval-thresholds" element={<PlatformApprovalThresholds />} />
+              <Route path="/platform/escalation-rules" element={<PlatformEscalationRules />} />
+              <Route path="/platform/routing-rules" element={<PlatformRoutingRules />} />
 
               {/* PLATFORM MANAGEMENT — Users, Roles & Access */}
-              <Route path="/platform/user-management" element={<PlaceholderPage title="User Management" />} />
-              <Route path="/platform/role-management" element={<PlaceholderPage title="Role Management" />} />
-              <Route path="/platform/permission-groups" element={<PlaceholderPage title="Permission Groups" />} />
-              <Route path="/platform/workspace-access-rules" element={<PlaceholderPage title="Workspace Access Rules" />} />
-              <Route path="/platform/delegation-proxy-rules" element={<PlaceholderPage title="Delegation / Proxy Rules" />} />
+              <Route path="/platform/user-management" element={<UserManagement />} />
+              <Route path="/platform/role-management" element={<RoleManagement />} />
+              <Route path="/platform/permission-groups" element={<PermissionGroups />} />
+              <Route path="/platform/workspace-access-rules" element={<WorkspaceAccessRules />} />
+              <Route path="/platform/delegation-proxy-rules" element={<DelegationProxyRules />} />
 
               {/* PLATFORM MANAGEMENT — Integration & Data Governance */}
-              <Route path="/platform/bc-integration-settings" element={<PlaceholderPage title="Business Central Integration Settings" />} />
-              <Route path="/platform/data-mapping-rules" element={<PlaceholderPage title="Data Mapping Rules" />} />
-              <Route path="/platform/sync-rules" element={<PlaceholderPage title="Sync Rules" />} />
-              <Route path="/platform/master-data-governance" element={<PlaceholderPage title="Master Data Governance" />} />
-              <Route path="/platform/entity-dimension-governance" element={<PlaceholderPage title="Entity / Dimension Governance" />} />
+              <Route path="/platform/bc-integration-settings" element={<BCIntegrationSettings />} />
+              <Route path="/platform/data-mapping-rules" element={<DataMappingRules />} />
+              <Route path="/platform/sync-rules" element={<PlatformSyncRules />} />
+              <Route path="/platform/master-data-governance" element={<MasterDataGovernance />} />
+              <Route path="/platform/entity-dimension-governance" element={<EntityDimensionGovernance />} />
 
               {/* PLATFORM MANAGEMENT — Security, Audit & Platform Governance */}
-              <Route path="/platform/access-control" element={<PlaceholderPage title="Access Control" />} />
-              <Route path="/platform/audit-permissions" element={<PlaceholderPage title="Audit Permissions" />} />
-              <Route path="/platform/platform-change-log" element={<PlaceholderPage title="Platform Change Log" />} />
-              <Route path="/platform/configuration-audit-trail" element={<PlaceholderPage title="Configuration Audit Trail" />} />
-              <Route path="/platform/platform-health" element={<PlaceholderPage title="Platform Health" />} />
+              <Route path="/platform/access-control" element={<PlatformAccessControl />} />
+              <Route path="/platform/audit-permissions" element={<PlatformAuditPermissions />} />
+              <Route path="/platform/platform-change-log" element={<PlatformChangeLog />} />
+              <Route path="/platform/configuration-audit-trail" element={<ConfigurationAuditTrail />} />
+              <Route path="/platform/platform-health" element={<PlatformHealth />} />
 
               {/* Catch-all 404 */}
               <Route path="*" element={
