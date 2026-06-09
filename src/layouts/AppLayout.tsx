@@ -5,7 +5,7 @@ import Sidebar from '../components/Sidebar'
 
 export default function AppLayout() {
   const [collapsed, setCollapsed] = useState(false)
-  const sidebarWidth = collapsed ? 64 : 240
+  const sidebarWidth = collapsed ? 48 : 240
 
   return (
     <div className="h-full">
