@@ -4,6 +4,7 @@ import StatusBadge from '../../components/StatusBadge'
 
 interface DelegationProxyRule {
   id: string
+  name: string
   delegator: string
   delegatorRole: string
   delegate: string
