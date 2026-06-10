@@ -123,7 +123,7 @@ export default function PersonalDashboard() {
       <div className="flex items-baseline justify-between mb-6">
         <div>
           <p className="text-[11px] font-semibold uppercase tracking-widest text-text-muted mb-1" style={{ letterSpacing: '0.12em' }}>
-            S00 Personal Dashboard
+            Orientation · Personal Dashboard
           </p>
           <h1 className="text-2xl font-bold text-text-primary">Good morning, {activePersona.name.split(' ')[0]}</h1>
           <p className="text-sm text-text-muted mt-1">{today} · Viewing as {activePersona.roleLabel}</p>

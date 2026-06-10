@@ -24,9 +24,11 @@ const lifecycleSteps = [
 ]
 
 const stageMap = [
-  { code: 'S00', label: 'Orientations', desc: 'Welcome + Personal Dashboard. Where every user lands first.' },
-  { code: 'S01', label: 'Marketplace (4D)', desc: 'Discern → Design → Deploy → Drive. Discovery, planning, submission, and tracking surfaces.' },
-  { code: 'S02', label: 'WorkSpaces', desc: '10 domain workspaces: Finance, HR, Procurement, Inventory & Assets, Admin, Project Economics, Approvals, Master Data, Intelligence, Platform Admin.' },
+  { code: '01', label: 'Orientation', desc: 'Welcome + Personal Dashboard. Where every user lands first.' },
+  { code: '02', label: 'Marketplace', desc: 'Discern → Design → Deploy → Drive. Discovery, planning, submission, and tracking surfaces.' },
+  { code: '03', label: 'Workspaces', desc: 'Finance, HR, Procurement, Inventory & Assets, Project Economics & Master Data — domain operations queues and trackers.' },
+  { code: '04', label: 'Service Operations', desc: 'Fulfilment, approvals, SLA & escalations, BC sync operations, and operational intelligence across all domains.' },
+  { code: '05', label: 'Platform Management', desc: 'Service catalogue config, workflow & approval rules, user/role/access admin, integration governance, and security audit.' },
 ]
 
 const fourD = [
@@ -45,7 +47,7 @@ const faqs = [
   },
   {
     q: 'Who approves my request?',
-    a: 'Approval authority is configured by request type, amount, entity, project, and domain. The intake form shows you the approver path before you submit, and the Threshold & Approval Reference (S01 Discern) has the full matrix.',
+    a: 'Approval authority is configured by request type, amount, entity, project, and domain. The intake form shows you the approver path before you submit, and the Threshold & Approval Reference (Marketplace · Discern) has the full matrix.',
   },
   {
     q: 'How does Business Central sync work?',
@@ -87,7 +89,7 @@ export default function PlatformHome() {
       {/* Welcome hero */}
       <div className="rounded-card p-6 mb-6" style={{ background: '#030F35' }}>
         <p className="text-[11px] font-semibold uppercase tracking-widest mb-2" style={{ color: '#B5C5F7' }}>
-          DigitalQatalyst · Digital ERP · S00 Welcome
+          DigitalQatalyst · DWS.04 · Orientation
         </p>
         <h1 className="text-2xl font-bold text-white mb-1">Welcome, {activePersona.name.split(' ')[0]}</h1>
         <p className="text-white/70 text-sm">
@@ -172,7 +174,7 @@ export default function PlatformHome() {
 
           {/* 4D Marketplace */}
           <div className="bg-white rounded-card border border-border-subtle shadow-sm p-6">
-            <h2 className="text-lg font-bold text-text-primary mb-1">The 4D Marketplace (S01)</h2>
+            <h2 className="text-lg font-bold text-text-primary mb-1">The 4D Marketplace</h2>
             <p className="text-sm text-text-muted mb-4">Organised by stage of intent, not by domain.</p>
             <div className="grid grid-cols-4 gap-3">
               {fourD.map((d) => (

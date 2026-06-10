@@ -30,9 +30,6 @@ export default function DeployMarketplace() {
     <div>
       {/* Header */}
       <div className="mb-6">
-        <p className="text-[11px] font-semibold uppercase tracking-widest text-text-muted mb-2" style={{ letterSpacing: '0.12em' }}>
-          S01 Marketplace · Deploy
-        </p>
         <h1 className="text-2xl font-bold text-text-primary mb-2">Deploy — Submit & activate work</h1>
         <p className="text-sm text-text-muted max-w-3xl leading-relaxed">
           Start or activate work by submitting requests, launching workflows, and triggering approvals. Every request type DQ supports — finance, procurement, project, admin, master data, integration — is in one place.

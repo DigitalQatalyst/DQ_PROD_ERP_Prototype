@@ -59,7 +59,7 @@ export default function MarketplaceJourney() {
       {/* Header */}
       <div className="mb-6">
         <p className="text-[11px] font-semibold uppercase tracking-widest text-text-muted mb-2" style={{ letterSpacing: '0.12em' }}>
-          S01 Marketplace · 4D Journey
+          Marketplace · 4D Journey
         </p>
         <div className="flex items-start gap-3">
           <div className="w-12 h-12 rounded-btn flex items-center justify-center shrink-0 text-dq-orange" style={{ background: '#FFF5F2' }}>

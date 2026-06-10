@@ -35,9 +35,6 @@ export default function DiscernMarketplace() {
     <div>
       {/* Header */}
       <div className="mb-6">
-        <p className="text-[11px] font-semibold uppercase tracking-widest text-text-muted mb-2" style={{ letterSpacing: '0.12em' }}>
-          S01 Marketplace · Discern
-        </p>
         <h1 className="text-2xl font-bold text-text-primary mb-2">Discern — Understand before acting</h1>
         <p className="text-sm text-text-muted max-w-3xl leading-relaxed">
           Clarify the need, find the right path, and check what policy or threshold applies — before you submit anything. Decision support, search, and reference resources.

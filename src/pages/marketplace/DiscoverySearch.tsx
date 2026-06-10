@@ -91,7 +91,7 @@ export default function DiscoverySearch() {
           className="text-[11px] font-semibold uppercase tracking-widest text-text-muted mb-2"
           style={{ letterSpacing: '0.12em' }}
         >
-          S01 Marketplace · F-S1-07
+          Marketplace · Discovery Search
         </p>
         <h1 className="text-2xl font-bold text-text-primary mb-2">Discovery Search</h1>
         <p className="text-sm text-text-muted max-w-3xl leading-relaxed">

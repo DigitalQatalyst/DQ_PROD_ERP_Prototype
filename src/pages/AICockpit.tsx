@@ -1,8 +1,6 @@
 import { useState } from 'react'
-import { Brain, Zap, Send, Sparkles, TrendingUp, AlertTriangle, CheckCircle, MessageSquare, User } from 'lucide-react'
+import { Brain, Send, Sparkles, TrendingUp, AlertTriangle, CheckCircle, User } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { kpis } from '../data/fixtures'
-import { useToast } from '../components/Toast'
 
 const aiInsights = [
   { domain: 'Finance', signal: 'Mazrui Holdings invoice (AED 90K) due in 8 days — executive approval required', severity: 'High', route: '/risk-alerts' },
@@ -30,7 +28,6 @@ const suggestedActions = [
 export default function AICockpit() {
   const [inputValue, setInputValue] = useState('')
   const [messages, setMessages] = useState(conversationHistory)
-  const { showToast } = useToast()
 
   const handleSend = () => {
     if (!inputValue.trim()) return
@@ -68,7 +65,7 @@ export default function AICockpit() {
           <p className="text-2xl font-bold text-status-error-text">{aiInsights.filter(i => i.severity === 'High').length}</p>
         </div>
         <div className="p-4 bg-white rounded-card border border-border-subtle shadow-sm">
-          <p className="text-xs text-white/60 mb-1">Avg Response Time</p>
+          <p className="text-xs text-text-muted mb-1">Avg Response Time</p>
           <p className="text-2xl font-bold">&lt;2s</p>
         </div>
       </div>

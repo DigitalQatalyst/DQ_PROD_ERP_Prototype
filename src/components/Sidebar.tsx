@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { usePersona } from '../context/PersonaContext'
+import type { PersonaRole } from '../types'
 import {
   Home, Compass, Brain,
-  Search, PenTool, Send, Gauge,
+  Search,
   LayoutDashboard, Inbox, CreditCard, FileText, BarChart2, ClipboardList,
   Users, UserPlus, ClipboardCheck, CheckSquare, BarChart,
   ShoppingCart, Building, ShoppingBag, GitPullRequest, ListOrdered,
@@ -31,12 +33,19 @@ interface NavItem {
 interface NavGroup {
   label: string
   items: NavItem[]
+  roles?: PersonaRole[]
 }
 
 interface NavArea {
   label: string
   groups: NavGroup[]
+  roles?: PersonaRole[]
 }
+
+// Shorthand role sets
+const NO_REQ: PersonaRole[] = ['EXEC','FIN-OWN','FIN-OPS','ADMIN','BC-STEWARD','HR-OWN','INV-OWN','ADM-OWN','PROC-OWN']
+const ADMIN_ONLY: PersonaRole[] = ['ADMIN']
+const ADMIN_BC: PersonaRole[] = ['ADMIN','BC-STEWARD']
 
 const NAV: NavArea[] = [
   {
@@ -58,19 +67,18 @@ const NAV: NavArea[] = [
       {
         label: '',
         items: [
-          { label: 'Discern Marketplace', icon: <Search size={16} strokeWidth={1.5} />, route: '/marketplace/discern' },
-          { label: 'Design Marketplace', icon: <PenTool size={16} strokeWidth={1.5} />, route: '/marketplace/design' },
-          { label: 'Deploy Marketplace', icon: <Send size={16} strokeWidth={1.5} />, route: '/marketplace/deploy' },
-          { label: 'Drive Marketplace', icon: <Gauge size={16} strokeWidth={1.5} />, route: '/marketplace/drive' },
+          { label: 'Marketplace', icon: <Search size={16} strokeWidth={1.5} />, route: '/marketplace' },
         ],
       },
     ],
   },
   {
     label: 'WORKSPACES',
+    roles: NO_REQ,
     groups: [
       {
         label: 'Finance Workspace',
+        roles: ['EXEC','FIN-OWN','FIN-OPS','ADMIN','BC-STEWARD'],
         items: [
           { label: 'Finance Work Queue', icon: <Inbox size={16} strokeWidth={1.5} />, route: '/finance/work-queue' },
           { label: 'Payment Processing', icon: <CreditCard size={16} strokeWidth={1.5} />, route: '/finance/payment-processing' },
@@ -81,6 +89,7 @@ const NAV: NavArea[] = [
       },
       {
         label: 'HR & People Workspace',
+        roles: ['EXEC','HR-OWN','FIN-OWN','ADM-OWN','ADMIN'],
         items: [
           { label: 'HR Work Queue', icon: <Inbox size={16} strokeWidth={1.5} />, route: '/hr/work-queue' },
           { label: 'Onboarding Operations', icon: <UserPlus size={16} strokeWidth={1.5} />, route: '/hr/onboarding-operations' },
@@ -91,6 +100,7 @@ const NAV: NavArea[] = [
       },
       {
         label: 'Procurement & Vendor Workspace',
+        roles: ['EXEC','PROC-OWN','FIN-OWN','ADM-OWN','ADMIN','BC-STEWARD'],
         items: [
           { label: 'Procurement Work Queue', icon: <Inbox size={16} strokeWidth={1.5} />, route: '/procurement/work-queue' },
           { label: 'Vendor Review', icon: <Building size={16} strokeWidth={1.5} />, route: '/procurement/vendor-review' },
@@ -101,6 +111,7 @@ const NAV: NavArea[] = [
       },
       {
         label: 'Inventory & Asset Workspace',
+        roles: ['INV-OWN','HR-OWN','ADM-OWN','PROC-OWN','ADMIN'],
         items: [
           { label: 'Asset Work Queue', icon: <Inbox size={16} strokeWidth={1.5} />, route: '/inventory/work-queue' },
           { label: 'Inventory Movement Tracker', icon: <Activity size={16} strokeWidth={1.5} />, route: '/inventory/movement-tracker' },
@@ -111,6 +122,7 @@ const NAV: NavArea[] = [
       },
       {
         label: 'Project Economics & Master Data Workspace',
+        roles: ['EXEC','FIN-OWN','ADM-OWN','ADMIN','BC-STEWARD'],
         items: [
           { label: 'Project Economics Queue', icon: <FolderOpen size={16} strokeWidth={1.5} />, route: '/project/economics-queue' },
           { label: 'Cost / Billing Readiness Tracker', icon: <DollarSign size={16} strokeWidth={1.5} />, route: '/project/cost-billing-readiness' },
@@ -123,9 +135,11 @@ const NAV: NavArea[] = [
   },
   {
     label: 'SERVICE OPERATIONS',
+    roles: NO_REQ,
     groups: [
       {
         label: 'Fulfilment Management',
+        roles: ['FIN-OPS','HR-OWN','INV-OWN','ADM-OWN','PROC-OWN','ADMIN'],
         items: [
           { label: 'Fulfilment Console', icon: <Monitor size={16} strokeWidth={1.5} />, route: '/service-ops/fulfilment-console' },
           { label: 'Assignment Queue', icon: <Inbox size={16} strokeWidth={1.5} />, route: '/service-ops/assignment-queue' },
@@ -136,6 +150,7 @@ const NAV: NavArea[] = [
       },
       {
         label: 'Approval & Control Operations',
+        roles: ['EXEC','FIN-OWN','FIN-OPS','HR-OWN','PROC-OWN','INV-OWN','ADM-OWN','ADMIN'],
         items: [
           { label: 'Approval Queue', icon: <Inbox size={16} strokeWidth={1.5} />, route: '/service-ops/approval-queue' },
           { label: 'Approval Tracker', icon: <ClipboardList size={16} strokeWidth={1.5} />, route: '/service-ops/approval-tracker' },
@@ -146,6 +161,7 @@ const NAV: NavArea[] = [
       },
       {
         label: 'SLA, Escalation & Exceptions',
+        roles: ['EXEC','FIN-OWN','HR-OWN','PROC-OWN','INV-OWN','ADM-OWN','ADMIN'],
         items: [
           { label: 'SLA Dashboard', icon: <BarChart size={16} strokeWidth={1.5} />, route: '/service-ops/sla-dashboard' },
           { label: 'Overdue Items', icon: <Clock size={16} strokeWidth={1.5} />, route: '/service-ops/overdue-items' },
@@ -156,6 +172,7 @@ const NAV: NavArea[] = [
       },
       {
         label: 'Business Central Sync Operations',
+        roles: ['BC-STEWARD','ADMIN','FIN-OWN'],
         items: [
           { label: 'Sync Monitor', icon: <Activity size={16} strokeWidth={1.5} />, route: '/service-ops/sync-monitor' },
           { label: 'Failed Syncs', icon: <AlertOctagon size={16} strokeWidth={1.5} />, route: '/service-ops/failed-syncs' },
@@ -166,6 +183,7 @@ const NAV: NavArea[] = [
       },
       {
         label: 'Operational Intelligence & Audit Evidence',
+        roles: ['EXEC','FIN-OWN','HR-OWN','PROC-OWN','INV-OWN','ADMIN','BC-STEWARD'],
         items: [
           { label: 'ERP Operations Dashboard', icon: <Monitor size={16} strokeWidth={1.5} />, route: '/service-ops/erp-operations-dashboard' },
           { label: 'Service Performance Dashboard', icon: <BarChart2 size={16} strokeWidth={1.5} />, route: '/service-ops/service-performance-dashboard' },
@@ -178,9 +196,11 @@ const NAV: NavArea[] = [
   },
   {
     label: 'PLATFORM MANAGEMENT',
+    roles: ADMIN_BC,
     groups: [
       {
         label: 'Service Catalogue Configuration',
+        roles: ADMIN_ONLY,
         items: [
           { label: 'Service Categories', icon: <Tag size={16} strokeWidth={1.5} />, route: '/platform/service-categories' },
           { label: 'Service Forms', icon: <ClipboardEdit size={16} strokeWidth={1.5} />, route: '/platform/service-forms' },
@@ -191,6 +211,7 @@ const NAV: NavArea[] = [
       },
       {
         label: 'Workflow & Approval Configuration',
+        roles: ADMIN_ONLY,
         items: [
           { label: 'Workflow Builder', icon: <GitMerge size={16} strokeWidth={1.5} />, route: '/platform/workflow-builder' },
           { label: 'Approval Rules', icon: <CheckSquare size={16} strokeWidth={1.5} />, route: '/platform/approval-rules' },
@@ -201,6 +222,7 @@ const NAV: NavArea[] = [
       },
       {
         label: 'Users, Roles & Access Administration',
+        roles: ADMIN_ONLY,
         items: [
           { label: 'User Management', icon: <Users size={16} strokeWidth={1.5} />, route: '/platform/user-management' },
           { label: 'Role Management', icon: <Award size={16} strokeWidth={1.5} />, route: '/platform/role-management' },
@@ -211,6 +233,7 @@ const NAV: NavArea[] = [
       },
       {
         label: 'Integration & Data Governance',
+        roles: ADMIN_BC,
         items: [
           { label: 'Business Central Integration Settings', icon: <Settings size={16} strokeWidth={1.5} />, route: '/platform/bc-integration-settings' },
           { label: 'Data Mapping Rules', icon: <Map size={16} strokeWidth={1.5} />, route: '/platform/data-mapping-rules' },
@@ -221,6 +244,7 @@ const NAV: NavArea[] = [
       },
       {
         label: 'Security, Audit & Platform Governance',
+        roles: ADMIN_BC,
         items: [
           { label: 'Access Control', icon: <Shield size={16} strokeWidth={1.5} />, route: '/platform/access-control' },
           { label: 'Audit Permissions', icon: <BookOpen size={16} strokeWidth={1.5} />, route: '/platform/audit-permissions' },
@@ -234,9 +258,20 @@ const NAV: NavArea[] = [
 ]
 
 export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
+  const { activePersona } = usePersona()
+  const role = activePersona.role
+
   const [groupCollapsed, setGroupCollapsed] = useState<Record<string, boolean>>({})
   const toggleGroup = (key: string) =>
     setGroupCollapsed((g) => ({ ...g, [key]: !g[key] }))
+
+  const visibleNav = NAV
+    .filter((area) => !area.roles || area.roles.includes(role))
+    .map((area) => ({
+      ...area,
+      groups: area.groups.filter((g) => !g.roles || g.roles.includes(role)),
+    }))
+    .filter((area) => area.groups.length > 0)
 
   return (
     <aside
@@ -255,9 +290,9 @@ export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
       </div>
 
       <nav className="pb-8">
-        {NAV.map((area) => (
+        {visibleNav.map((area) => (
           <div key={area.label} className="mt-4 first:mt-1">
-            {/* Feature Area header — NOT collapsible */}
+            {/* Area header */}
             {!collapsed && (
               <div className="px-4 pb-1">
                 <span
@@ -274,14 +309,13 @@ export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
               </div>
             )}
 
-            {/* Feature Groups */}
+            {/* Groups */}
             {area.groups.map((group) => {
               const groupKey = area.label + group.label
               const isCollapsed = !!group.label && !!groupCollapsed[groupKey]
 
               return (
                 <div key={groupKey} className={group.label ? 'mt-1' : ''}>
-                  {/* Group header — collapsible if has label */}
                   {group.label && !collapsed && (
                     <button
                       onClick={() => toggleGroup(groupKey)}
@@ -302,7 +336,6 @@ export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
                     </button>
                   )}
 
-                  {/* Feature items */}
                   {!isCollapsed && group.items.map((item) => (
                     <NavLink
                       key={item.route}

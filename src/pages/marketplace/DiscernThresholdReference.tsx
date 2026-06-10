@@ -92,7 +92,7 @@ export default function DiscernThresholdReference() {
     <div>
       <div className="mb-6">
         <p className="text-[11px] font-semibold uppercase tracking-widest text-text-muted mb-2" style={{ letterSpacing: '0.12em' }}>
-          S01 Marketplace · Discern
+          Marketplace · Discern
         </p>
         <h1 className="text-2xl font-bold text-text-primary mb-2">Threshold & Approval Reference</h1>
         <p className="text-sm text-text-muted max-w-3xl leading-relaxed">

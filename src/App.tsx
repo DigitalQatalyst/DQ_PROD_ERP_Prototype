@@ -113,7 +113,7 @@ import AIGuardrailsAuditLog from './pages/AIGuardrailsAuditLog'
 import ChangeRequestRegister from './pages/ChangeRequestRegister'
 import ReleaseEnvironmentControl from './pages/ReleaseEnvironmentControl'
 
-// S01 Marketplace — legacy domain catalogues (kept for backward links from DiscoverySearch)
+// Marketplace — legacy domain catalogues (kept for backward links from DiscoverySearch)
 import FinanceServicesCatalogue from './pages/marketplace/FinanceServicesCatalogue'
 import ProcurementServicesCatalogue from './pages/marketplace/ProcurementServicesCatalogue'
 import ProjectServiceCatalogue from './pages/marketplace/ProjectServiceCatalogue'
@@ -122,7 +122,8 @@ import MasterDataCatalogue from './pages/marketplace/MasterDataCatalogue'
 import IntegrationSupportCatalogue from './pages/marketplace/IntegrationSupportCatalogue'
 import DiscoverySearch from './pages/marketplace/DiscoverySearch'
 
-// S01 Marketplace — 4D structure (Discern / Design / Deploy / Drive)
+// Marketplace — 4D structure (Discern / Design / Deploy / Drive)
+import MarketplaceLayout from './pages/marketplace/MarketplaceLayout'
 import DiscernMarketplace from './pages/marketplace/DiscernMarketplace'
 import DiscernGuidedAssistant from './pages/marketplace/DiscernGuidedAssistant'
 import DiscernPolicyLibrary from './pages/marketplace/DiscernPolicyLibrary'
@@ -254,25 +255,30 @@ export default function App() {
               <Route path="/approval-console" element={<ApprovalConsole />} />
               <Route path="/escalations" element={<EscalationsExceptions />} />
 
-              {/* S00 Orientations — Welcome + Personal Dashboard */}
+              {/* Orientation — Welcome + Personal Dashboard */}
               <Route path="/personal-dashboard" element={<PersonalDashboard />} />
               <Route path="/orientation" element={<PlatformHome />} />
               <Route path="/role-switch" element={<RoleEntitySwitch />} />
 
-              {/* S01 Marketplace — 4D structure */}
-              <Route path="/marketplace/discern" element={<DiscernMarketplace />} />
+              {/* Marketplace — 4D tabs layout */}
+              <Route path="/marketplace" element={<MarketplaceLayout />}>
+                <Route path="discern" element={<DiscernMarketplace />} />
+                <Route path="design" element={<DesignMarketplace />} />
+                <Route path="deploy" element={<DeployMarketplace />} />
+                <Route path="drive" element={<DriveMarketplace />} />
+              </Route>
+              {/* Discern sub-pages — full page, no tab bar */}
               <Route path="/marketplace/discern/assistant" element={<DiscernGuidedAssistant />} />
               <Route path="/marketplace/discern/policies" element={<DiscernPolicyLibrary />} />
               <Route path="/marketplace/discern/thresholds" element={<DiscernThresholdReference />} />
-              <Route path="/marketplace/design" element={<DesignMarketplace />} />
+              {/* Design sub-pages — full page, no tab bar */}
               <Route path="/marketplace/design/templates" element={<DesignTemplateBrowser />} />
               <Route path="/marketplace/design/evidence" element={<DesignEvidenceLibrary />} />
               <Route path="/marketplace/design/workflows" element={<DesignWorkflowBlueprints />} />
-              <Route path="/marketplace/deploy" element={<DeployMarketplace />} />
-              <Route path="/marketplace/drive" element={<DriveMarketplace />} />
+              {/* Journey — full page, no tab bar */}
               <Route path="/marketplace/journey/:itemId" element={<MarketplaceJourney />} />
 
-              {/* S01 legacy routes — still resolve for deep-links, not in sidebar */}
+              {/* Marketplace legacy routes — still resolve for deep-links, not in sidebar */}
               <Route path="/marketplace/finance" element={<FinanceServicesCatalogue />} />
               <Route path="/marketplace/procurement" element={<ProcurementServicesCatalogue />} />
               <Route path="/marketplace/project-service" element={<ProjectServiceCatalogue />} />

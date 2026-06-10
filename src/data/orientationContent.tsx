@@ -331,7 +331,7 @@ export const roleGuide: Record<PersonaRole, RoleGuide> = {
     reportsYouConsume: ['My Requests / Request Tracker', 'My Tasks', 'Clarifications'],
     firstWeekChecklist: [
       'Submit a test expense request end-to-end',
-      'Try the Guided Request Assistant in S01 → Discern',
+      'Try the Guided Request Assistant in Marketplace → Discern',
       'Browse the Policy Library for spending rules',
       'Bookmark Request Tracker',
     ],
